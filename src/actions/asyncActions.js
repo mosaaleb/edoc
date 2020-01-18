@@ -15,3 +15,14 @@ export const signUpWithUserData = (userData) => (
     dispatch(setValidationErrors(error.response.data.message));
   })
 );
+
+export const signInWithEmailAndPassword = (userData) => (
+  (dispatch) => Axios.post('http://localhost:3000/authenticate', {
+    authentication: { ...userData }
+  }).then((res) => {
+    dispatch(setToken(res.data.auth_token));
+    dispatch(setCurrentUser({ name: 'muhammad', id: '2' }));
+  }).catch((error) => {
+    dispatch(setValidationErrors(error.response.data.message));
+  })
+);

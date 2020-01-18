@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import Axios from 'axios';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { signInWithEmailAndPassword } from '../../actions/asyncActions';
 
-const SignIn = () => {
+const SignIn = ({ signInWithEmailAndPassword }) => {
   const [inputFields, setInputFields] = useState({
     email: '',
     password: ''
@@ -9,14 +11,11 @@ const SignIn = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    Axios.post('http://localhost:3000/authenticate', { authentication: { ...inputFields } })
-      .then((res) => {
-        console.log(res.data);
-      });
+    signInWithEmailAndPassword(inputFields);
   };
 
   return (
-    <form className="flex flex-col" onSubmit={handleSubmit}>
+    <form className="flex flex-col" onSubmit={handleSubmit} noValidate>
       <input
         type="email"
         placeholder="Email"
@@ -38,4 +37,8 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+SignIn.propTypes = {
+  signInWithEmailAndPassword: PropTypes.func.isRequired
+};
+
+export default connect(null, { signInWithEmailAndPassword })(SignIn);
