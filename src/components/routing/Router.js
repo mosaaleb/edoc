@@ -18,7 +18,7 @@ const Router = () => (
       <Route exact path="/signup" component={SignUp} />
       <PrivateRoute exact path="/doctors" component={Doctors} />
       <PrivateRoute exact path="/specialities" component={Specialities} />
-      <PrivateRoute component={FourOhFour} />
+      <Route component={FourOhFour} />
     </Switch>
   </BrowserRouter>
 );
@@ -26,3 +26,10 @@ const Router = () => (
 export default Router;
 
 // TODO: remove app if not needed
+
+
+/* <Route exact path="/">
+  {loggedIn ? <Redirect to="/dashboard" /> : <PublicHomePage />}
+</Route> */
+
+// https://reacttraining.com/react-router/web/api/Redirect
