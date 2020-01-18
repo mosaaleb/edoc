@@ -15,11 +15,13 @@ const configureStore = () => {
   );
 
   store.subscribe(() => {
-    Storage.saveState({ auth: store.getState().auth, token: store.getState().token });
-    // Storage.saveState({ token: store.getState().token });
+    Storage.saveState({
+      auth: store.getState().auth,
+      token: store.getState().token
+    });
   });
 
-  window.store = store;
+  window.store = store.getState();
   return store;
 };
 

@@ -8,9 +8,7 @@ const auth = (state = initState, action) => {
     case 'SET_CURRENT_USER':
       return {
         isAuthenticated: true,
-        currentUser: {
-          data: action.data
-        }
+        currentUser: action.data
       };
     default:
       return state;

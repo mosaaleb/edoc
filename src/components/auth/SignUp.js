@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ValidationError from '../ValidationError';
-import { signUpWithUserData } from '../../actions/authActions';
+import { signUpWithUserData } from '../../actions/asyncActions';
 
 const SignUp = ({ signUpWithUserData }) => {
   const [validations, setValidations] = useState({ isValid: true, errors: {} });
