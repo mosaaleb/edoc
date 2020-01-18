@@ -4,8 +4,7 @@ import PropTypes from 'prop-types';
 import ValidationError from '../ValidationError';
 import { signUpWithUserData } from '../../actions/asyncActions';
 
-const SignUp = ({ signUpWithUserData }) => {
-  const [validations, setValidations] = useState({ isValid: true, errors: {} });
+const SignUp = ({ signUpWithUserData, validationErrors }) => {
   const [inputFields, setInputFields] = useState({
     email: '',
     first_name: '',
@@ -16,16 +15,11 @@ const SignUp = ({ signUpWithUserData }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    signUpWithUserData(inputFields).catch((error) => {
-      setValidations({
-        isValid: false,
-        errors: error.response.data.message
-      });
-    });
+    signUpWithUserData(inputFields);
   };
 
   return (
-    <form className="flex flex-col" onSubmit={handleSubmit}>
+    <form className="flex flex-col" onSubmit={handleSubmit} noValidate>
       <input
         type="email"
         placeholder="Email"
@@ -35,8 +29,9 @@ const SignUp = ({ signUpWithUserData }) => {
         className="p-1 border-2"
       />
       <ValidationError
-        error={validations.errors.email}
-        isValid={validations.isValid}
+        inputField="Email"
+        isValid={validationErrors.isValid}
+        error={validationErrors.errors.email}
       />
       <input
         type="text"
@@ -47,8 +42,9 @@ const SignUp = ({ signUpWithUserData }) => {
         className="p-1 border-2"
       />
       <ValidationError
-        error={validations.errors.first_name}
-        isValid={validations.isValid}
+        inputField="First Name"
+        isValid={validationErrors.isValid}
+        error={validationErrors.errors.first_name}
       />
       <input
         type="text"
@@ -59,8 +55,9 @@ const SignUp = ({ signUpWithUserData }) => {
         className="p-1 border-2"
       />
       <ValidationError
-        error={validations.errors.password}
-        isValid={validations.isValid}
+        inputField="Last Name"
+        isValid={validationErrors.isValid}
+        error={validationErrors.errors.last_name}
       />
       <input
         type="password"
@@ -72,8 +69,9 @@ const SignUp = ({ signUpWithUserData }) => {
         className="p-1 border-2"
       />
       <ValidationError
-        error={validations.errors.password}
-        isValid={validations.isValid}
+        inputField="Password"
+        isValid={validationErrors.isValid}
+        error={validationErrors.errors.password}
       />
       <input
         type="password"
@@ -85,8 +83,9 @@ const SignUp = ({ signUpWithUserData }) => {
         className="p-1 border-2"
       />
       <ValidationError
-        error={validations.errors.password_confirmation}
-        isValid={validations.isValid}
+        inputField="Password Confirmation"
+        isValid={validationErrors.isValid}
+        error={validationErrors.errors.password_confirmation}
       />
       <button type="submit">Create Account</button>
     </form>
@@ -94,11 +93,16 @@ const SignUp = ({ signUpWithUserData }) => {
 };
 
 SignUp.propTypes = {
-  signUpWithUserData: PropTypes.func.isRequired
+  signUpWithUserData: PropTypes.func.isRequired,
+  validationErrors: PropTypes.shape({
+    isValid: PropTypes.bool.isRequired,
+    errors: PropTypes.objectOf(PropTypes.arrayOf(PropTypes.string))
+  }).isRequired
 };
 
 const mapStateToProps = (state) => ({
-  notification: state.notification
+  notification: state.notification,
+  validationErrors: state.validationErrors
 });
 
 export default connect(mapStateToProps, { signUpWithUserData })(SignUp);

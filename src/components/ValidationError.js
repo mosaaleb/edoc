@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ValidationError = ({ isValid, error }) => {
+const ValidationError = ({ inputField, isValid, error }) => {
   const errors = error.map((err) => (
     <p key={err} className="text-red-600">
       *&nbsp;
+      {inputField}
+      &nbsp;
       {err}
     </p>
   ));
@@ -16,6 +18,7 @@ ValidationError.defaultProps = {
 };
 
 ValidationError.propTypes = {
+  inputField: PropTypes.string.isRequired,
   isValid: PropTypes.bool.isRequired,
   error: PropTypes.arrayOf(PropTypes.string)
 };
