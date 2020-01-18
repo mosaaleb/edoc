@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import ValidationError from '../ValidationError';
 import { signUpWithUserData } from '../../actions/asyncActions';
 
-const SignUp = ({ signUpWithUserData, validationErrors }) => {
+const SignUp = ({ signUpWithUserData, validationErrors, history }) => {
   const [inputFields, setInputFields] = useState({
     email: '',
     first_name: '',
@@ -15,7 +17,7 @@ const SignUp = ({ signUpWithUserData, validationErrors }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    signUpWithUserData(inputFields);
+    signUpWithUserData(inputFields, history);
   };
 
   return (
@@ -93,6 +95,7 @@ const SignUp = ({ signUpWithUserData, validationErrors }) => {
 };
 
 SignUp.propTypes = {
+  history: ReactRouterPropTypes.history.isRequired,
   signUpWithUserData: PropTypes.func.isRequired,
   validationErrors: PropTypes.shape({
     isValid: PropTypes.bool.isRequired,
@@ -105,4 +108,4 @@ const mapStateToProps = (state) => ({
   validationErrors: state.validationErrors
 });
 
-export default connect(mapStateToProps, { signUpWithUserData })(SignUp);
+export default connect(mapStateToProps, { signUpWithUserData })(withRouter(SignUp));

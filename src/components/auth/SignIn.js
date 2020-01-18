@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import { signInWithEmailAndPassword } from '../../actions/asyncActions';
 
-const SignIn = ({ signInWithEmailAndPassword }) => {
+const SignIn = ({ signInWithEmailAndPassword, history }) => {
   const [inputFields, setInputFields] = useState({
     email: '',
     password: ''
@@ -11,7 +13,7 @@ const SignIn = ({ signInWithEmailAndPassword }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(inputFields);
+    signInWithEmailAndPassword(inputFields, history);
   };
 
   return (
@@ -28,6 +30,7 @@ const SignIn = ({ signInWithEmailAndPassword }) => {
         type="password"
         placeholder="Password"
         value={inputFields.password}
+        autoComplete="Current Password"
         // prettier-ignore
         onChange={(e) => setInputFields({ ...inputFields, password: e.target.value })}
         className="border-2 border"
@@ -38,7 +41,8 @@ const SignIn = ({ signInWithEmailAndPassword }) => {
 };
 
 SignIn.propTypes = {
+  history: ReactRouterPropTypes.history.isRequired,
   signInWithEmailAndPassword: PropTypes.func.isRequired
 };
 
-export default connect(null, { signInWithEmailAndPassword })(SignIn);
+export default connect(null, { signInWithEmailAndPassword })(withRouter(SignIn));
