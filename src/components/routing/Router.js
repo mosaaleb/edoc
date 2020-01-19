@@ -5,6 +5,7 @@ import PrivateRoute from './PrivateRoute';
 import App from '../App';
 import SignIn from '../auth/SignIn';
 import SignUp from '../auth/SignUp';
+import DoctorSignUp from '../auth/DoctorSignUp';
 import FourOhFour from '../FourOhFour';
 import Doctors from '../doctors/Doctors';
 import Specialities from '../specialities/Specialities';
@@ -16,6 +17,8 @@ const Router = () => (
       <Route exact path="/" component={App} />
       <Route exact path="/signin" component={SignIn} />
       <Route exact path="/signup" component={SignUp} />
+      <Route exact path="/doctorsignup" component={DoctorSignUp} />
+
       <PrivateRoute exact path="/doctors" component={Doctors} />
       <PrivateRoute exact path="/specialities" component={Specialities} />
       <Route component={FourOhFour} />
