@@ -12,17 +12,22 @@ const Specialities = ({ token }) => {
       headers: {
         Authorization: `Bearer ${token}`
       }
-    })
-      .then((res) => {
-        setSpecialities(res.data);
-      });
+    }).then((res) => {
+      setSpecialities(res.data);
+    });
   }, [token]);
 
   return (
-    <div>
-      {specialities.map((speciality) => (
-        <Speciality name={speciality.name} key={speciality.id} />
-      ))}
+    <div className="p-2 font-montserrat">
+      <div className="flex flex-col items-center py-10">
+        <h3 className="font-bold text-4xl">Search Doctors</h3>
+        <p className="text-lg">Search doctors by health concerns listed below.</p>
+      </div>
+      <div className="flex flex-wrap justify-center">
+        {specialities.map((speciality) => (
+          <Speciality name={speciality.name} key={speciality.id} />
+        ))}
+      </div>
     </div>
   );
 };

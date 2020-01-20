@@ -1059,6 +1059,10 @@ video {
   background-color: #702459;
 }
 
+.bg-smoke-light {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
 .hover\:bg-transparent:hover {
   background-color: transparent;
 }
@@ -1431,6 +1435,10 @@ video {
   background-color: #702459;
 }
 
+.hover\:bg-smoke-light:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
 .focus\:bg-transparent:focus {
   background-color: transparent;
 }
@@ -1801,6 +1809,10 @@ video {
 
 .focus\:bg-pink-900:focus {
   background-color: #702459;
+}
+
+.focus\:bg-smoke-light:focus {
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .bg-bottom {
@@ -2255,6 +2267,10 @@ video {
   border-color: #702459;
 }
 
+.border-smoke-light {
+  border-color: rgba(0, 0, 0, 0.4);
+}
+
 .hover\:border-transparent:hover {
   border-color: transparent;
 }
@@ -2627,6 +2643,10 @@ video {
   border-color: #702459;
 }
 
+.hover\:border-smoke-light:hover {
+  border-color: rgba(0, 0, 0, 0.4);
+}
+
 .focus\:border-transparent:focus {
   border-color: transparent;
 }
@@ -2997,6 +3017,10 @@ video {
 
 .focus\:border-pink-900:focus {
   border-color: #702459;
+}
+
+.focus\:border-smoke-light:focus {
+  border-color: rgba(0, 0, 0, 0.4);
 }
 
 .rounded-none {
@@ -3651,6 +3675,14 @@ video {
 
 .font-mono {
   font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.font-roboto {
+  font-family: Roboto Slab, serif;
+}
+
+.font-montserrat {
+  font-family: Montserrat, sans-serif;
 }
 
 .font-hairline {
@@ -7343,6 +7375,22 @@ video {
   color: #702459;
 }
 
+.placeholder-smoke-light::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.placeholder-smoke-light:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.placeholder-smoke-light::-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.placeholder-smoke-light::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
 .focus\:placeholder-transparent:focus::-webkit-input-placeholder {
   color: transparent;
 }
@@ -8831,6 +8879,22 @@ video {
   color: #702459;
 }
 
+.focus\:placeholder-smoke-light:focus::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.focus\:placeholder-smoke-light:focus:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.focus\:placeholder-smoke-light:focus::-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.focus\:placeholder-smoke-light:focus::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
 .pointer-events-none {
   pointer-events: none;
 }
@@ -9442,6 +9506,10 @@ video {
   color: #702459;
 }
 
+.text-smoke-light {
+  color: rgba(0, 0, 0, 0.4);
+}
+
 .hover\:text-transparent:hover {
   color: transparent;
 }
@@ -9814,6 +9882,10 @@ video {
   color: #702459;
 }
 
+.hover\:text-smoke-light:hover {
+  color: rgba(0, 0, 0, 0.4);
+}
+
 .focus\:text-transparent:focus {
   color: transparent;
 }
@@ -10184,6 +10256,10 @@ video {
 
 .focus\:text-pink-900:focus {
   color: #702459;
+}
+
+.focus\:text-smoke-light:focus {
+  color: rgba(0, 0, 0, 0.4);
 }
 
 .text-xs {
@@ -10639,6 +10715,10 @@ video {
   z-index: auto;
 }
 
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&display=swap');
+
 @media (min-width: 640px) {
   .sm\:sr-only {
     position: absolute;
@@ -11076,6 +11156,10 @@ video {
     background-color: #702459;
   }
 
+  .sm\:bg-smoke-light {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
   .sm\:hover\:bg-transparent:hover {
     background-color: transparent;
   }
@@ -11448,6 +11532,10 @@ video {
     background-color: #702459;
   }
 
+  .sm\:hover\:bg-smoke-light:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
   .sm\:focus\:bg-transparent:focus {
     background-color: transparent;
   }
@@ -11818,6 +11906,10 @@ video {
 
   .sm\:focus\:bg-pink-900:focus {
     background-color: #702459;
+  }
+
+  .sm\:focus\:bg-smoke-light:focus {
+    background-color: rgba(0, 0, 0, 0.4);
   }
 
   .sm\:bg-bottom {
@@ -12272,6 +12364,10 @@ video {
     border-color: #702459;
   }
 
+  .sm\:border-smoke-light {
+    border-color: rgba(0, 0, 0, 0.4);
+  }
+
   .sm\:hover\:border-transparent:hover {
     border-color: transparent;
   }
@@ -12644,6 +12740,10 @@ video {
     border-color: #702459;
   }
 
+  .sm\:hover\:border-smoke-light:hover {
+    border-color: rgba(0, 0, 0, 0.4);
+  }
+
   .sm\:focus\:border-transparent:focus {
     border-color: transparent;
   }
@@ -13014,6 +13114,10 @@ video {
 
   .sm\:focus\:border-pink-900:focus {
     border-color: #702459;
+  }
+
+  .sm\:focus\:border-smoke-light:focus {
+    border-color: rgba(0, 0, 0, 0.4);
   }
 
   .sm\:rounded-none {
@@ -13668,6 +13772,14 @@ video {
 
   .sm\:font-mono {
     font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .sm\:font-roboto {
+    font-family: Roboto Slab, serif;
+  }
+
+  .sm\:font-montserrat {
+    font-family: Montserrat, sans-serif;
   }
 
   .sm\:font-hairline {
@@ -17360,6 +17472,22 @@ video {
     color: #702459;
   }
 
+  .sm\:placeholder-smoke-light::-webkit-input-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  .sm\:placeholder-smoke-light:-ms-input-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  .sm\:placeholder-smoke-light::-ms-input-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  .sm\:placeholder-smoke-light::placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
   .sm\:focus\:placeholder-transparent:focus::-webkit-input-placeholder {
     color: transparent;
   }
@@ -18848,6 +18976,22 @@ video {
     color: #702459;
   }
 
+  .sm\:focus\:placeholder-smoke-light:focus::-webkit-input-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  .sm\:focus\:placeholder-smoke-light:focus:-ms-input-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  .sm\:focus\:placeholder-smoke-light:focus::-ms-input-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  .sm\:focus\:placeholder-smoke-light:focus::placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
   .sm\:pointer-events-none {
     pointer-events: none;
   }
@@ -19459,6 +19603,10 @@ video {
     color: #702459;
   }
 
+  .sm\:text-smoke-light {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
   .sm\:hover\:text-transparent:hover {
     color: transparent;
   }
@@ -19831,6 +19979,10 @@ video {
     color: #702459;
   }
 
+  .sm\:hover\:text-smoke-light:hover {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
   .sm\:focus\:text-transparent:focus {
     color: transparent;
   }
@@ -20201,6 +20353,10 @@ video {
 
   .sm\:focus\:text-pink-900:focus {
     color: #702459;
+  }
+
+  .sm\:focus\:text-smoke-light:focus {
+    color: rgba(0, 0, 0, 0.4);
   }
 
   .sm\:text-xs {
@@ -21094,6 +21250,10 @@ video {
     background-color: #702459;
   }
 
+  .md\:bg-smoke-light {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
   .md\:hover\:bg-transparent:hover {
     background-color: transparent;
   }
@@ -21466,6 +21626,10 @@ video {
     background-color: #702459;
   }
 
+  .md\:hover\:bg-smoke-light:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
   .md\:focus\:bg-transparent:focus {
     background-color: transparent;
   }
@@ -21836,6 +22000,10 @@ video {
 
   .md\:focus\:bg-pink-900:focus {
     background-color: #702459;
+  }
+
+  .md\:focus\:bg-smoke-light:focus {
+    background-color: rgba(0, 0, 0, 0.4);
   }
 
   .md\:bg-bottom {
@@ -22290,6 +22458,10 @@ video {
     border-color: #702459;
   }
 
+  .md\:border-smoke-light {
+    border-color: rgba(0, 0, 0, 0.4);
+  }
+
   .md\:hover\:border-transparent:hover {
     border-color: transparent;
   }
@@ -22662,6 +22834,10 @@ video {
     border-color: #702459;
   }
 
+  .md\:hover\:border-smoke-light:hover {
+    border-color: rgba(0, 0, 0, 0.4);
+  }
+
   .md\:focus\:border-transparent:focus {
     border-color: transparent;
   }
@@ -23032,6 +23208,10 @@ video {
 
   .md\:focus\:border-pink-900:focus {
     border-color: #702459;
+  }
+
+  .md\:focus\:border-smoke-light:focus {
+    border-color: rgba(0, 0, 0, 0.4);
   }
 
   .md\:rounded-none {
@@ -23686,6 +23866,14 @@ video {
 
   .md\:font-mono {
     font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .md\:font-roboto {
+    font-family: Roboto Slab, serif;
+  }
+
+  .md\:font-montserrat {
+    font-family: Montserrat, sans-serif;
   }
 
   .md\:font-hairline {
@@ -27378,6 +27566,22 @@ video {
     color: #702459;
   }
 
+  .md\:placeholder-smoke-light::-webkit-input-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  .md\:placeholder-smoke-light:-ms-input-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  .md\:placeholder-smoke-light::-ms-input-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  .md\:placeholder-smoke-light::placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
   .md\:focus\:placeholder-transparent:focus::-webkit-input-placeholder {
     color: transparent;
   }
@@ -28866,6 +29070,22 @@ video {
     color: #702459;
   }
 
+  .md\:focus\:placeholder-smoke-light:focus::-webkit-input-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  .md\:focus\:placeholder-smoke-light:focus:-ms-input-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  .md\:focus\:placeholder-smoke-light:focus::-ms-input-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  .md\:focus\:placeholder-smoke-light:focus::placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
   .md\:pointer-events-none {
     pointer-events: none;
   }
@@ -29477,6 +29697,10 @@ video {
     color: #702459;
   }
 
+  .md\:text-smoke-light {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
   .md\:hover\:text-transparent:hover {
     color: transparent;
   }
@@ -29849,6 +30073,10 @@ video {
     color: #702459;
   }
 
+  .md\:hover\:text-smoke-light:hover {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
   .md\:focus\:text-transparent:focus {
     color: transparent;
   }
@@ -30219,6 +30447,10 @@ video {
 
   .md\:focus\:text-pink-900:focus {
     color: #702459;
+  }
+
+  .md\:focus\:text-smoke-light:focus {
+    color: rgba(0, 0, 0, 0.4);
   }
 
   .md\:text-xs {
@@ -31112,6 +31344,10 @@ video {
     background-color: #702459;
   }
 
+  .lg\:bg-smoke-light {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
   .lg\:hover\:bg-transparent:hover {
     background-color: transparent;
   }
@@ -31484,6 +31720,10 @@ video {
     background-color: #702459;
   }
 
+  .lg\:hover\:bg-smoke-light:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
   .lg\:focus\:bg-transparent:focus {
     background-color: transparent;
   }
@@ -31854,6 +32094,10 @@ video {
 
   .lg\:focus\:bg-pink-900:focus {
     background-color: #702459;
+  }
+
+  .lg\:focus\:bg-smoke-light:focus {
+    background-color: rgba(0, 0, 0, 0.4);
   }
 
   .lg\:bg-bottom {
@@ -32308,6 +32552,10 @@ video {
     border-color: #702459;
   }
 
+  .lg\:border-smoke-light {
+    border-color: rgba(0, 0, 0, 0.4);
+  }
+
   .lg\:hover\:border-transparent:hover {
     border-color: transparent;
   }
@@ -32680,6 +32928,10 @@ video {
     border-color: #702459;
   }
 
+  .lg\:hover\:border-smoke-light:hover {
+    border-color: rgba(0, 0, 0, 0.4);
+  }
+
   .lg\:focus\:border-transparent:focus {
     border-color: transparent;
   }
@@ -33050,6 +33302,10 @@ video {
 
   .lg\:focus\:border-pink-900:focus {
     border-color: #702459;
+  }
+
+  .lg\:focus\:border-smoke-light:focus {
+    border-color: rgba(0, 0, 0, 0.4);
   }
 
   .lg\:rounded-none {
@@ -33704,6 +33960,14 @@ video {
 
   .lg\:font-mono {
     font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .lg\:font-roboto {
+    font-family: Roboto Slab, serif;
+  }
+
+  .lg\:font-montserrat {
+    font-family: Montserrat, sans-serif;
   }
 
   .lg\:font-hairline {
@@ -37396,6 +37660,22 @@ video {
     color: #702459;
   }
 
+  .lg\:placeholder-smoke-light::-webkit-input-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  .lg\:placeholder-smoke-light:-ms-input-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  .lg\:placeholder-smoke-light::-ms-input-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  .lg\:placeholder-smoke-light::placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
   .lg\:focus\:placeholder-transparent:focus::-webkit-input-placeholder {
     color: transparent;
   }
@@ -38884,6 +39164,22 @@ video {
     color: #702459;
   }
 
+  .lg\:focus\:placeholder-smoke-light:focus::-webkit-input-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  .lg\:focus\:placeholder-smoke-light:focus:-ms-input-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  .lg\:focus\:placeholder-smoke-light:focus::-ms-input-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  .lg\:focus\:placeholder-smoke-light:focus::placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
   .lg\:pointer-events-none {
     pointer-events: none;
   }
@@ -39495,6 +39791,10 @@ video {
     color: #702459;
   }
 
+  .lg\:text-smoke-light {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
   .lg\:hover\:text-transparent:hover {
     color: transparent;
   }
@@ -39867,6 +40167,10 @@ video {
     color: #702459;
   }
 
+  .lg\:hover\:text-smoke-light:hover {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
   .lg\:focus\:text-transparent:focus {
     color: transparent;
   }
@@ -40237,6 +40541,10 @@ video {
 
   .lg\:focus\:text-pink-900:focus {
     color: #702459;
+  }
+
+  .lg\:focus\:text-smoke-light:focus {
+    color: rgba(0, 0, 0, 0.4);
   }
 
   .lg\:text-xs {
@@ -41130,6 +41438,10 @@ video {
     background-color: #702459;
   }
 
+  .xl\:bg-smoke-light {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
   .xl\:hover\:bg-transparent:hover {
     background-color: transparent;
   }
@@ -41502,6 +41814,10 @@ video {
     background-color: #702459;
   }
 
+  .xl\:hover\:bg-smoke-light:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
   .xl\:focus\:bg-transparent:focus {
     background-color: transparent;
   }
@@ -41872,6 +42188,10 @@ video {
 
   .xl\:focus\:bg-pink-900:focus {
     background-color: #702459;
+  }
+
+  .xl\:focus\:bg-smoke-light:focus {
+    background-color: rgba(0, 0, 0, 0.4);
   }
 
   .xl\:bg-bottom {
@@ -42326,6 +42646,10 @@ video {
     border-color: #702459;
   }
 
+  .xl\:border-smoke-light {
+    border-color: rgba(0, 0, 0, 0.4);
+  }
+
   .xl\:hover\:border-transparent:hover {
     border-color: transparent;
   }
@@ -42698,6 +43022,10 @@ video {
     border-color: #702459;
   }
 
+  .xl\:hover\:border-smoke-light:hover {
+    border-color: rgba(0, 0, 0, 0.4);
+  }
+
   .xl\:focus\:border-transparent:focus {
     border-color: transparent;
   }
@@ -43068,6 +43396,10 @@ video {
 
   .xl\:focus\:border-pink-900:focus {
     border-color: #702459;
+  }
+
+  .xl\:focus\:border-smoke-light:focus {
+    border-color: rgba(0, 0, 0, 0.4);
   }
 
   .xl\:rounded-none {
@@ -43722,6 +44054,14 @@ video {
 
   .xl\:font-mono {
     font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .xl\:font-roboto {
+    font-family: Roboto Slab, serif;
+  }
+
+  .xl\:font-montserrat {
+    font-family: Montserrat, sans-serif;
   }
 
   .xl\:font-hairline {
@@ -47414,6 +47754,22 @@ video {
     color: #702459;
   }
 
+  .xl\:placeholder-smoke-light::-webkit-input-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  .xl\:placeholder-smoke-light:-ms-input-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  .xl\:placeholder-smoke-light::-ms-input-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  .xl\:placeholder-smoke-light::placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
   .xl\:focus\:placeholder-transparent:focus::-webkit-input-placeholder {
     color: transparent;
   }
@@ -48902,6 +49258,22 @@ video {
     color: #702459;
   }
 
+  .xl\:focus\:placeholder-smoke-light:focus::-webkit-input-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  .xl\:focus\:placeholder-smoke-light:focus:-ms-input-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  .xl\:focus\:placeholder-smoke-light:focus::-ms-input-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  .xl\:focus\:placeholder-smoke-light:focus::placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
   .xl\:pointer-events-none {
     pointer-events: none;
   }
@@ -49513,6 +49885,10 @@ video {
     color: #702459;
   }
 
+  .xl\:text-smoke-light {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
   .xl\:hover\:text-transparent:hover {
     color: transparent;
   }
@@ -49885,6 +50261,10 @@ video {
     color: #702459;
   }
 
+  .xl\:hover\:text-smoke-light:hover {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
   .xl\:focus\:text-transparent:focus {
     color: transparent;
   }
@@ -50255,6 +50635,10 @@ video {
 
   .xl\:focus\:text-pink-900:focus {
     color: #702459;
+  }
+
+  .xl\:focus\:text-smoke-light:focus {
+    color: rgba(0, 0, 0, 0.4);
   }
 
   .xl\:text-xs {
