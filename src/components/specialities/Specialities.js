@@ -18,7 +18,7 @@ const Specialities = ({ token }) => {
   }, [token]);
 
   return (
-    <div className="p-2 font-montserrat">
+    <div className="p-4 font-montserrat">
       <div className="flex flex-col items-center py-10">
         <h3 className="font-bold text-4xl">Search Doctors</h3>
         <p className="text-lg">Search doctors by health concerns listed below.</p>
