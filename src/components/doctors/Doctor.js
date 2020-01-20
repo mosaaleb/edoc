@@ -26,13 +26,13 @@ const Doctor = ({ doctor }) => {
         </div>
         <div className="w-full">
           <h3 className="font-bold text-gray-900">{fullName}</h3>
-          <h5 className="text-gray-700 text-sm font-bold">General Doctor</h5>
+          <h5 className="text-gray-700 text-sm font-bold">{doctor.speciality}</h5>
           <p className="text-gray-600 text-sm">MD- General Medicine</p>
           <div className="flex justify-between font-bold text-sm mt-3">
             <p>$200</p>
             <p>14 Years of exp.</p>
             <p>
-              <button type="button">{likeSvg}</button>
+              <button type="button" className="focus:outline-none">{likeSvg}</button>
               <span> 126</span>
             </p>
           </div>
@@ -46,13 +46,13 @@ const Doctor = ({ doctor }) => {
       <div className="flex justify-between">
         <button
           type="button"
-          className="font-bold text-teal-500 bg-white border border-teal-500 py-2 px-8 rounded-full w-6/13"
+          className="font-bold text-teal-500 bg-white border border-teal-500 py-2 rounded-full w-6/13 focus:outline-none"
         >
           Call
         </button>
         <button
           type="button"
-          className="font-bold text-gray-100 bg py-2 rounded-full w-6/13 bg-gradient"
+          className="font-bold text-gray-100 bg py-2 rounded-full w-6/13 bg-gradient focus:outline-none"
         >
           Book
         </button>
@@ -65,7 +65,8 @@ Doctor.propTypes = {
   doctor: PropTypes.shape({
     id: PropTypes.number,
     first_name: PropTypes.string,
-    last_name: PropTypes.string
+    last_name: PropTypes.string,
+    speciality: PropTypes.string
   }).isRequired
 };
 
