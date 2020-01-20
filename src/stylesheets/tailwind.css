@@ -11063,6 +11063,10 @@ video {
   width: 100vw;
 }
 
+.w-6\/13 {
+  width: 47%;
+}
+
 .z-0 {
   z-index: 0;
 }
@@ -11094,6 +11098,11 @@ video {
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
 
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&display=swap');
+
+.bg-gradient {
+  background-image: -webkit-gradient(linear, left top, right top, from(#38b2ac), to(#2c7a7b));
+  background-image: linear-gradient(to right, #38b2ac, #2c7a7b);
+}
 
 @media (min-width: 640px) {
   .sm\:sr-only {
@@ -21536,6 +21545,10 @@ video {
     width: 100vw;
   }
 
+  .sm\:w-6\/13 {
+    width: 47%;
+  }
+
   .sm\:z-0 {
     z-index: 0;
   }
@@ -21562,6 +21575,11 @@ video {
 
   .sm\:z-auto {
     z-index: auto;
+  }
+
+  .sm\:bg-gradient {
+    background-image: -webkit-gradient(linear, left top, right top, from(#38b2ac), to(#2c7a7b));
+    background-image: linear-gradient(to right, #38b2ac, #2c7a7b);
   }
 }
 
@@ -32006,6 +32024,10 @@ video {
     width: 100vw;
   }
 
+  .md\:w-6\/13 {
+    width: 47%;
+  }
+
   .md\:z-0 {
     z-index: 0;
   }
@@ -32032,6 +32054,11 @@ video {
 
   .md\:z-auto {
     z-index: auto;
+  }
+
+  .md\:bg-gradient {
+    background-image: -webkit-gradient(linear, left top, right top, from(#38b2ac), to(#2c7a7b));
+    background-image: linear-gradient(to right, #38b2ac, #2c7a7b);
   }
 }
 
@@ -42476,6 +42503,10 @@ video {
     width: 100vw;
   }
 
+  .lg\:w-6\/13 {
+    width: 47%;
+  }
+
   .lg\:z-0 {
     z-index: 0;
   }
@@ -42502,6 +42533,11 @@ video {
 
   .lg\:z-auto {
     z-index: auto;
+  }
+
+  .lg\:bg-gradient {
+    background-image: -webkit-gradient(linear, left top, right top, from(#38b2ac), to(#2c7a7b));
+    background-image: linear-gradient(to right, #38b2ac, #2c7a7b);
   }
 }
 
@@ -52946,6 +52982,10 @@ video {
     width: 100vw;
   }
 
+  .xl\:w-6\/13 {
+    width: 47%;
+  }
+
   .xl\:z-0 {
     z-index: 0;
   }
@@ -52972,5 +53012,10 @@ video {
 
   .xl\:z-auto {
     z-index: auto;
+  }
+
+  .xl\:bg-gradient {
+    background-image: -webkit-gradient(linear, left top, right top, from(#38b2ac), to(#2c7a7b));
+    background-image: linear-gradient(to right, #38b2ac, #2c7a7b);
   }
 }

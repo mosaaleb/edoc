@@ -18,14 +18,18 @@ const Doctors = ({ token }) => {
   }, [token]);
 
   return (
-    <div>
-      {doctors.map((doctor) => (
-        <Doctor id={doctor.id} key={doctor.id} />
-      ))}
+    <div className="p-4 font-montserrat">
+      <h2 className="text-teal-500 font-bold mb-2">
+        Results Showing all Doctors
+      </h2>
+      <div className="">
+        {doctors.map((doctor) => (
+          <Doctor doctor={doctor} key={doctor.id} />
+        ))}
+      </div>
     </div>
   );
 };
-
 
 Doctors.propTypes = {
   token: PropTypes.string.isRequired

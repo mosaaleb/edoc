@@ -4,3 +4,9 @@
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&display=swap');
+
+@responsive {
+  .bg-gradient {
+    background-image: linear-gradient(to right, theme('colors.teal.500'), theme('colors.teal.700'));
+  }
+}

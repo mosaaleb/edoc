@@ -7,6 +7,9 @@ module.exports = {
       },
       colors: {
         'smoke-light': 'rgba(0, 0, 0, 0.4)'
+      },
+      width: {
+        '6/13': '47%'
       }
     }
   },
