@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import AppointmentDatePicker from '../AppointmentDatePicker';
 import avatar from '../../assets/avatar.jpg';
 
 const Doctor = ({ doctor }) => {
+  const [isDatePickerShowing, setIsDatePickerShowing] = useState(false);
+
   const fullName = `Dr. ${doctor.first_name} ${doctor.last_name}`;
+
   const likeSvg = (
     <svg width="16" height="16" fill="none" className="inline-block">
       <path
@@ -16,6 +20,12 @@ const Doctor = ({ doctor }) => {
 
   return (
     <div className="shadow-md p-4 mb-6">
+      {isDatePickerShowing ? (
+        <AppointmentDatePicker
+          doctor={doctor}
+          setIsDatePickerShowing={setIsDatePickerShowing}
+        />
+      ) : null}
       <div className="flex mb-3 flex-grow">
         <div className="w-16 h-16 mr-3 rounded-full overflow-hidden">
           <img
@@ -26,13 +36,17 @@ const Doctor = ({ doctor }) => {
         </div>
         <div className="w-full">
           <h3 className="font-bold text-gray-900">{fullName}</h3>
-          <h5 className="text-gray-700 text-sm font-bold">{doctor.speciality}</h5>
+          <h5 className="text-gray-700 text-sm font-bold">
+            {doctor.speciality}
+          </h5>
           <p className="text-gray-600 text-sm">MD- General Medicine</p>
           <div className="flex justify-between font-bold text-sm mt-3">
             <p>$200</p>
             <p>14 Years of exp.</p>
             <p>
-              <button type="button" className="focus:outline-none">{likeSvg}</button>
+              <button type="button" className="focus:outline-none">
+                {likeSvg}
+              </button>
               <span> 126</span>
             </p>
           </div>
@@ -52,6 +66,7 @@ const Doctor = ({ doctor }) => {
         </button>
         <button
           type="button"
+          onClick={() => setIsDatePickerShowing(true)}
           className="font-bold text-gray-100 bg py-2 rounded-full w-6/13 bg-gradient focus:outline-none"
         >
           Book
@@ -63,7 +78,7 @@ const Doctor = ({ doctor }) => {
 
 Doctor.propTypes = {
   doctor: PropTypes.shape({
-    id: PropTypes.number,
+    role_id: PropTypes.number,
     first_name: PropTypes.string,
     last_name: PropTypes.string,
     speciality: PropTypes.string

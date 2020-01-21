@@ -24,7 +24,7 @@ const Doctors = ({ token }) => {
       </h2>
       <div className="">
         {doctors.map((doctor) => (
-          <Doctor doctor={doctor} key={doctor.id} />
+          <Doctor doctor={doctor} key={doctor.role_id} />
         ))}
       </div>
     </div>
