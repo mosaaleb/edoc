@@ -24,3 +24,6 @@ yarn-error.log*
 
 # tailwind original config
 tailwindcss-config.js
+
+# todo
+todo.md

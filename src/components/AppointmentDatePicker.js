@@ -1,9 +1,18 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Datetime from 'react-datetime';
+import ValidationError from './ValidationError';
+import { createAppointment } from '../actions/asyncActions';
 import '../stylesheets/datePicker.css';
 
-const AppointmentDatePicker = ({ doctor, setIsDatePickerShowing }) => {
+const AppointmentDatePicker = ({
+  id,
+  doctor,
+  validationErrors,
+  createAppointment,
+  setIsDatePickerShowing
+}) => {
   const [selectedDateTime, setSelectedDateTime] = useState();
   const fullName = `Dr. ${doctor.first_name} ${doctor.last_name}`;
 
@@ -17,7 +26,7 @@ const AppointmentDatePicker = ({ doctor, setIsDatePickerShowing }) => {
   );
 
   const handleClick = () => {
-    
+    createAppointment(id, doctor.role_id, selectedDateTime);
   };
 
   return (
@@ -29,6 +38,11 @@ const AppointmentDatePicker = ({ doctor, setIsDatePickerShowing }) => {
           </h4>
           <Datetime onChange={(date) => setSelectedDateTime(date)} />
         </div>
+        <ValidationError
+          inputField="Date"
+          isValid={validationErrors.isValid}
+          error={validationErrors.errors.date}
+        />
         <div className="w-4/5 flex flex-col items-center">
           <button
             type="button"
@@ -68,18 +82,26 @@ const AppointmentDatePicker = ({ doctor, setIsDatePickerShowing }) => {
 };
 
 AppointmentDatePicker.propTypes = {
+  id: PropTypes.number.isRequired,
+  createAppointment: PropTypes.func.isRequired,
   setIsDatePickerShowing: PropTypes.func.isRequired,
   doctor: PropTypes.shape({
     role_id: PropTypes.number,
     first_name: PropTypes.string,
     last_name: PropTypes.string,
     speciality: PropTypes.string
+  }).isRequired,
+  validationErrors: PropTypes.shape({
+    isValid: PropTypes.bool.isRequired,
+    errors: PropTypes.objectOf(PropTypes.arrayOf(PropTypes.string))
   }).isRequired
 };
 
-export default AppointmentDatePicker;
+const mapStateToProps = (state) => ({
+  id: state.auth.currentUser.role_id,
+  validationErrors: state.validationErrors
+});
 
-// Callback trigger when the date changes.
-// The callback receives the selected moment object as only parameter,
-// if the date in the input is valid.
-// If the date in the input is not valid, the callback receives the value of the input (a string).
+export default connect(mapStateToProps, { createAppointment })(
+  AppointmentDatePicker
+);
