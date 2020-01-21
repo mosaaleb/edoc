@@ -11104,6 +11104,59 @@ video {
   background-image: linear-gradient(to right, #38b2ac, #2c7a7b);
 }
 
+/***
+** Datetime picker component styles
+***/
+
+.rdtPicker table {
+  width: 100%;
+  table-layout: auto;
+}
+
+input.form-control {
+  display: none
+}
+
+.rdtPicker td.rdtDisabled,
+.rdtPicker td.rtdDisabaled:hover {
+  cursor: not-allowed;
+}
+
+.rdtPicker td,
+.rdtPicker th {
+  text-align: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  padding: 0;
+  margin: 0;
+}
+
+.rdtPicker td.rdtDay:hover,
+.rdtPicker td.rdtHour:hover,
+.rdtPicker td.rdtMinute:hover,
+.rdtPicker td.rdtSecond:hover,
+.rdtPicker .rdtTimeToggle:hover,
+.rdtPicker thead.rdtSwitch,
+.rdtPicker td:hover {
+  background-color: #4fd1c5;
+}
+
+.rdtPicker td.rdtToday {
+  border-bottom-width: 2px;
+}
+
+.rdtPicker td.rdtNew,
+.rtdPicker td.rdtOld {
+  color: transparent;
+}
+
+.rdtPicker td.rdtActive {
+  background-color: #4fd1c5;
+  border-radius: 9999px;
+  font-weight: 700;
+}
+
 @media (min-width: 640px) {
   .sm\:sr-only {
     position: absolute;
@@ -53019,3 +53072,4 @@ video {
     background-image: linear-gradient(to right, #38b2ac, #2c7a7b);
   }
 }
+

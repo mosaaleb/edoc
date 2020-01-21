@@ -1,0 +1,61 @@
+.rdtPicker .rdtTimeToggle {
+  text-align: center;
+}
+
+.rdtPicker td {
+  cursor: pointer;
+}
+
+.rdtPicker th.rdtSwitch {
+  width: 100px;
+}
+
+
+.rdtPicker thead tr:first-child th {
+  cursor: pointer;
+}
+
+/* .rdtPicker button {
+  border: none;
+  background: none;
+  cursor: pointer;
+} */
+
+.rdtPicker thead button {
+  width: 100%;
+  height: 100%;
+}
+
+td.rdtMonth,
+td.rdtYear {
+  cursor: pointer;
+}
+
+
+.rdtCounters {
+  display: inline-block;
+}
+
+.rdtCounters > div {
+  float: left;
+}
+
+.rdtCounter {
+  height: 100px;
+}
+
+.rdtCounter {
+  width: 40px;
+}
+
+.rdtCounterSeparator {
+  line-height: 100px;
+}
+
+.rdtTime td {
+  cursor: default;
+}
+
+.rdtTime {
+  display: block;
+}
