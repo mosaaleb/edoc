@@ -1,3 +1,58 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&display=swap');
+
+@responsive {
+  .bg-gradient {
+    background-image: linear-gradient(to right, theme('colors.teal.500'), theme('colors.teal.700'));
+  }
+}
+
+/***
+** Datetime picker component styles
+***/
+
+.rdtPicker table {
+  @apply w-full table-auto;
+}
+
+input.form-control {
+  @apply hidden
+}
+
+.rdtPicker td.rdtDisabled,
+.rdtPicker td.rtdDisabaled:hover {
+  @apply cursor-not-allowed;
+}
+
+.rdtPicker td,
+.rdtPicker th {
+  @apply text-center w-10 h-10 rounded-full p-0 m-0;
+}
+.rdtPicker td.rdtDay:hover,
+.rdtPicker td.rdtHour:hover,
+.rdtPicker td.rdtMinute:hover,
+.rdtPicker td.rdtSecond:hover,
+.rdtPicker .rdtTimeToggle:hover,
+.rdtPicker thead.rdtSwitch,
+.rdtPicker td:hover {
+  @apply bg-teal-400;
+}
+
+.rdtPicker td.rdtToday {
+  @apply border-b-2;
+}
+
+.rdtPicker td.rdtNew,
+.rtdPicker td.rdtOld {
+  @apply text-transparent;
+}
+
+
+.rdtPicker td.rdtActive {
+  @apply bg-teal-400 rounded-full font-bold;
+}
+
