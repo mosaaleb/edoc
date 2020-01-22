@@ -7,8 +7,8 @@ import { setCurrentUser } from './authActions';
 import { setValidationErrors } from './validationsErrorsActions';
 
 export const signUpWithUserData = (userData, history) => (
-  (dispatch) => Axios.post('http://localhost:3000/accounts', {
-    account: { ...userData }
+  (dispatch) => Axios.post('http://localhost:3000/patients', {
+    patient: { account_attributes: { ...userData } }
   }).then((res) => {
     dispatch(setToken(res.data.auth_token));
     dispatch(setCurrentUser(res.data.current_user));
