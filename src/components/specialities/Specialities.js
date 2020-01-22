@@ -32,7 +32,7 @@ const Specialities = ({ token }) => {
       </div>
       <div className="flex flex-wrap justify-center">
         {specialities.map((speciality) => (
-          <Speciality name={speciality.speciality} key={speciality.id} />
+          <Speciality speciality={speciality} key={speciality.id} />
         ))}
       </div>
     </div>
