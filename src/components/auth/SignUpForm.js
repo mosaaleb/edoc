@@ -7,6 +7,7 @@ import ValidationError from '../ValidationError';
 import { signUpWithUserData } from '../../actions/asyncActions';
 
 const SignUpForm = ({ signUpWithUserData, validationErrors, history }) => {
+  const { isValid, errors } = validationErrors;
   const [inputFields, setInputFields] = useState({
     email: '',
     first_name: '',
@@ -14,6 +15,7 @@ const SignUpForm = ({ signUpWithUserData, validationErrors, history }) => {
     password: '',
     password_confirmation: ''
   });
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,12 +30,13 @@ const SignUpForm = ({ signUpWithUserData, validationErrors, history }) => {
         value={inputFields.email}
         // prettier-ignore
         onChange={(e) => setInputFields({ ...inputFields, email: e.target.value })}
-        className={`py-2 px-4 rounded-full focus:outline-none my-3 shadow-md ${validationErrors.errors.email ? 'border border-red-600' : ''}`}
+        className={`py-2 px-4 rounded-full focus:outline-none my-3 shadow-md 
+        ${errors['account.email'] ? 'border border-red-600' : ''}`}
       />
       <ValidationError
         inputField="Email"
-        isValid={validationErrors.isValid}
-        error={validationErrors.errors.email}
+        isValid={isValid}
+        error={errors['account.email']}
       />
       <input
         type="text"
@@ -41,12 +44,13 @@ const SignUpForm = ({ signUpWithUserData, validationErrors, history }) => {
         value={inputFields.first_name}
         // prettier-ignore
         onChange={(e) => setInputFields({ ...inputFields, first_name: e.target.value })}
-        className={`py-2 px-4 rounded-full focus:outline-none my-3 shadow-md ${validationErrors.errors.first_name ? 'border border-red-600' : ''}`}
+        className={`py-2 px-4 rounded-full focus:outline-none my-3 shadow-md 
+        ${errors['account.first_name'] ? 'border border-red-600' : ''}`}
       />
       <ValidationError
         inputField="First Name"
-        isValid={validationErrors.isValid}
-        error={validationErrors.errors.first_name}
+        isValid={isValid}
+        error={errors['account.first_name']}
       />
       <input
         type="text"
@@ -54,12 +58,13 @@ const SignUpForm = ({ signUpWithUserData, validationErrors, history }) => {
         value={inputFields.last_name}
         // prettier-ignore
         onChange={(e) => setInputFields({ ...inputFields, last_name: e.target.value })}
-        className={`py-2 px-4 rounded-full focus:outline-none my-3 shadow-md ${validationErrors.errors.last_name ? 'border border-red-600' : ''}`}
+        className={`py-2 px-4 rounded-full focus:outline-none my-3 shadow-md 
+        ${errors['account.last_name'] ? 'border border-red-600' : ''}`}
       />
       <ValidationError
         inputField="Last Name"
-        isValid={validationErrors.isValid}
-        error={validationErrors.errors.last_name}
+        isValid={isValid}
+        error={errors['account.last_name']}
       />
       <input
         type="password"
@@ -68,12 +73,13 @@ const SignUpForm = ({ signUpWithUserData, validationErrors, history }) => {
         value={inputFields.password}
         // prettier-ignore
         onChange={(e) => setInputFields({ ...inputFields, password: e.target.value })}
-        className={`py-2 px-4 rounded-full focus:outline-none my-3 shadow-md ${validationErrors.errors.password ? 'border border-red-600' : ''}`}
+        className={`py-2 px-4 rounded-full focus:outline-none my-3 shadow-md 
+        ${errors['account.password'] ? 'border border-red-600' : ''}`}
       />
       <ValidationError
         inputField="Password"
-        isValid={validationErrors.isValid}
-        error={validationErrors.errors.password}
+        isValid={isValid}
+        error={errors['account.password']}
       />
       <input
         type="password"
@@ -82,12 +88,13 @@ const SignUpForm = ({ signUpWithUserData, validationErrors, history }) => {
         value={inputFields.password_confirmation}
         // prettier-ignore
         onChange={(e) => setInputFields({ ...inputFields, password_confirmation: e.target.value })}
-        className={`py-2 px-4 rounded-full focus:outline-none my-3 shadow-md ${validationErrors.errors.password_confirmation ? 'border border-red-600' : ''}`}
+        className={`py-2 px-4 rounded-full focus:outline-none my-3 shadow-md 
+        ${errors['account.password_confirmation'] ? 'border border-red-600' : ''}`}
       />
       <ValidationError
         inputField="Password Confirmation"
-        isValid={validationErrors.isValid}
-        error={validationErrors.errors.password_confirmation}
+        isValid={isValid}
+        error={errors['account.password_confirmation']}
       />
       <button
         type="submit"
