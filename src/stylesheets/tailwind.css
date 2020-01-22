@@ -11104,10 +11104,6 @@ video {
   background-image: linear-gradient(to right, #38b2ac, #2c7a7b);
 }
 
-/***
-** Datetime picker component styles
-***/
-
 .rdtPicker table {
   width: 100%;
   table-layout: auto;
