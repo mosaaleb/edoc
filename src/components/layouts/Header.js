@@ -4,8 +4,15 @@ import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { removeToken } from '../../actions/tokenActions';
 import { removeCurrentUser } from '../../actions/authActions';
+import Notification from '../Notification';
+import { setNotificationMessage } from '../../actions/notificationActions';
 
-const Header = ({ removeToken, removeCurrentUser }) => {
+const Header = ({
+  removeToken,
+  notification,
+  removeCurrentUser,
+  setNotificationMessage
+}) => {
   const history = useHistory();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -22,61 +29,67 @@ const Header = ({ removeToken, removeCurrentUser }) => {
     removeToken();
     removeCurrentUser();
     history.push('/');
+    setNotificationMessage('You are signed out now!');
     setIsOpen(false);
   };
 
   return (
-    <div className="bg-teal-100 shadow-md font-montserrat">
-      <header className="sm:flex sm:justify-between relative sm:static sm:w-4/5 sm:mx-auto">
-        <div className="flex justify-between items-center p-3 sm:px-0">
-          <div>
-            <a className="font-bold text-teal-500 text-2xl" href="/">
-              EDoc
-            </a>
+    <>
+      {notification ? <Notification message={notification} /> : null}
+      <div className="bg-teal-100 shadow-md font-montserrat">
+        <header className="sm:flex sm:justify-between relative sm:static sm:w-4/5 sm:mx-auto">
+          <div className="flex justify-between items-center p-3 sm:px-0">
+            <div>
+              <a className="font-bold text-teal-500 text-2xl" href="/">
+                EDoc
+              </a>
+            </div>
+            <div>
+              <button
+                type="button"
+                onClick={() => setIsOpen(!isOpen)}
+                className="block focus:outline-none text-teal-500 sm:hidden"
+              >
+                <svg className="h-6 w-6 fill-current">{svgPath()}</svg>
+              </button>
+            </div>
           </div>
-          <div>
+          <div
+            className={`px-2 absolute w-full bg-teal-100 shadow-lg rounded-b-lg ${
+              isOpen ? 'block' : 'hidden'
+            } sm:block sm:static sm:shadow-none sm:w-auto sm:flex sm:items-center sm:px-0`}
+          >
+            <a
+              href="/doctors"
+              className="block mt-1 font-bold text-sm uppercase p-1 px-1 rounded text-teal-500 hover:bg-teal-200 sm:px-1 sm:mx-5 text-sm text-center"
+            >
+              Doctors
+            </a>
+            <a
+              href="/specialities"
+              className="block mt-1 font-bold text-sm uppercase p-1 px-1 rounded text-teal-500 hover:bg-teal-200 sm:px-1 sm:mx-5 text-sm text-center"
+            >
+              Specialities
+            </a>
             <button
               type="button"
-              onClick={() => setIsOpen(!isOpen)}
-              className="block focus:outline-none text-teal-500 sm:hidden"
+              onClick={handleSignOut}
+              className="w-full mt-1 font-bold text-sm uppercase p-1 px-1 rounded text-teal-500 hover:bg-teal-200 sm:px-1 sm:mx-5 mb-3 sm:mb-0 focus:outline-none"
             >
-              <svg className="h-6 w-6 fill-current">{svgPath()}</svg>
+              Sign Out
             </button>
           </div>
-        </div>
-        <div
-          className={`px-2 absolute w-full bg-teal-100 shadow-lg rounded-b-lg ${
-            isOpen ? 'block' : 'hidden'
-          } sm:block sm:static sm:shadow-none sm:w-auto sm:flex sm:items-center sm:px-0`}
-        >
-          <a
-            href="/doctors"
-            className="block mt-1 font-bold text-sm uppercase p-1 px-1 rounded text-teal-500 hover:bg-teal-200 sm:px-1 sm:mx-5 text-sm text-center"
-          >
-            Doctors
-          </a>
-          <a
-            href="/specialities"
-            className="block mt-1 font-bold text-sm uppercase p-1 px-1 rounded text-teal-500 hover:bg-teal-200 sm:px-1 sm:mx-5 text-sm text-center"
-          >
-            Specialities
-          </a>
-          <button
-            type="button"
-            onClick={handleSignOut}
-            className="w-full mt-1 font-bold text-sm uppercase p-1 px-1 rounded text-teal-500 hover:bg-teal-200 sm:px-1 sm:mx-5 mb-3 sm:mb-0 focus:outline-none"
-          >
-            Sign Out
-          </button>
-        </div>
-      </header>
-    </div>
+        </header>
+      </div>
+    </>
   );
 };
 
 Header.propTypes = {
   removeToken: PropTypes.func.isRequired,
-  removeCurrentUser: PropTypes.func.isRequired
+  notification: PropTypes.string.isRequired,
+  removeCurrentUser: PropTypes.func.isRequired,
+  setNotificationMessage: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = (dispatch) => ({
@@ -85,7 +98,14 @@ const mapDispatchToProps = (dispatch) => ({
   },
   removeCurrentUser: () => {
     dispatch(removeCurrentUser());
+  },
+  setNotificationMessage: (msg) => {
+    dispatch(setNotificationMessage(msg));
   }
 });
 
-export default connect(null, mapDispatchToProps)(Header);
+const mapStateToProps = (state) => ({
+  notification: state.notification
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

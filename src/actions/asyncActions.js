@@ -13,7 +13,7 @@ export const signUpWithUserData = (userData, history) => (
   }).then((res) => {
     dispatch(setToken(res.data.auth_token));
     dispatch(setCurrentUser(res.data.current_user));
-    history.push('/');
+    history.push('/specialities');
   }).catch((error) => {
     dispatch(setValidationErrors(error.response.data.message));
   })
@@ -37,7 +37,7 @@ export const signInWithEmailAndPassword = (userData, history) => (
   }).then((res) => {
     dispatch(setToken(res.data.auth_token));
     dispatch(setCurrentUser(res.data.current_user));
-    history.push('/');
+    history.push('/specialities');
   }).catch((error) => {
     dispatch(setValidationErrors(error.response.data.message));
   })
