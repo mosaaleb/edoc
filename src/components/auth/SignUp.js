@@ -4,7 +4,7 @@ import SignUpForm from './SignUpForm';
 const SignUp = () => (
   <div className="flex items-center w-full justify-center h-screen bg-teal-100 font-montserrat">
     <div className="w-4/5 max-w-md">
-      <div className="text-center my-8">
+      <div className="text-center my-8 text-gray-900">
         <h2 className="text-teal-500 font-bold text-3xl leading-loose">
           <span className="text-gray-700">I</span>
           Doc
