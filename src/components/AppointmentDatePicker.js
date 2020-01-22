@@ -7,7 +7,7 @@ import { createAppointment } from '../actions/asyncActions';
 import '../stylesheets/datePicker.css';
 
 const AppointmentDatePicker = ({
-  id,
+  token,
   doctor,
   validationErrors,
   createAppointment,
@@ -26,7 +26,7 @@ const AppointmentDatePicker = ({
   );
 
   const handleClick = () => {
-    createAppointment(id, doctor.role_id, selectedDateTime);
+    createAppointment(doctor.role_id, selectedDateTime, token);
   };
 
   return (
@@ -82,7 +82,7 @@ const AppointmentDatePicker = ({
 };
 
 AppointmentDatePicker.propTypes = {
-  id: PropTypes.number.isRequired,
+  token: PropTypes.string.isRequired,
   createAppointment: PropTypes.func.isRequired,
   setIsDatePickerShowing: PropTypes.func.isRequired,
   doctor: PropTypes.shape({
@@ -99,7 +99,9 @@ AppointmentDatePicker.propTypes = {
 
 const mapStateToProps = (state) => ({
   id: state.auth.currentUser.role_id,
-  validationErrors: state.validationErrors
+  token: state.token,
+  validationErrors: state.validationErrors,
+  notifications: state.notifications
 });
 
 export default connect(mapStateToProps, { createAppointment })(

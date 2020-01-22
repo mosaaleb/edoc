@@ -1,7 +1,7 @@
-const notification = (state = [], action) => {
+const notification = (state = '', action) => {
   switch (action.type) {
-    case 'SET_NOTIFICATIONS':
-      return [...action.notifications];
+    case 'SET_NOTIFICATION_MESSAGE':
+      return action.notification;
     default:
       return state;
   }

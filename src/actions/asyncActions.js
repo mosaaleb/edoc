@@ -5,6 +5,7 @@ import Axios from 'axios';
 import { setToken } from './tokenActions';
 import { setCurrentUser } from './authActions';
 import { setValidationErrors } from './validationsErrorsActions';
+import { setNotificationMessage } from './notificationActions';
 
 export const signUpWithUserData = (userData, history) => (
   (dispatch) => Axios.post('http://localhost:3000/patients', {
@@ -42,13 +43,15 @@ export const signInWithEmailAndPassword = (userData, history) => (
   })
 );
 
-// TODO: no need to send patient_id as it can be accessed in the api
-
-export const createAppointment = (patient_id, doctor_id, date, history) => (
+export const createAppointment = (doctor_id, date, token) => (
   (dispatch) => Axios.post('http://localhost:3000/appointments', {
-    appointment: { patient_id, doctor_id, date }
+    appointment: { doctor_id, date }
+  }, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
   }).then((res) => {
-
+    dispatch(setNotificationMessage(res.data.message));
   }).catch((error) => {
     dispatch(setValidationErrors(error.response.data.message));
   })
