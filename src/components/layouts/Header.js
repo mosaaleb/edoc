@@ -25,8 +25,8 @@ const Header = ({ removeToken, removeCurrentUser }) => {
   };
 
   return (
-    <div className="bg-teal-100 shadow-md font-montserrat">
-      <header className="sm:flex sm:justify-between bg-teal-100 relative sm:static sm:w-4/5 sm:mx-auto">
+    <div className="bg-teal-200 shadow-md font-montserrat">
+      <header className="sm:flex sm:justify-between bg-teal-200 relative sm:static sm:w-4/5 sm:mx-auto">
         <div className="flex justify-between items-center p-3 sm:px-0">
           <div>
             <a className="font-bold text-teal-500 text-2xl" href="/">
@@ -44,7 +44,7 @@ const Header = ({ removeToken, removeCurrentUser }) => {
           </div>
         </div>
         <div
-          className={`px-2 absolute w-full bg-teal-100 shadow-lg rounded-b-lg ${
+          className={`px-2 absolute w-full bg-teal-200 shadow-lg rounded-b-lg ${
             isOpen ? 'block' : 'hidden'
           } sm:block sm:static sm:shadow-none sm:w-auto sm:flex sm:items-center sm:px-0`}
         >

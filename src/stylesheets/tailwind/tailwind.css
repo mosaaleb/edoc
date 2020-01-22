@@ -11,10 +11,6 @@
   }
 }
 
-/***
-** Datetime picker component styles
-***/
-
 .rdtPicker table {
   @apply w-full table-auto;
 }
