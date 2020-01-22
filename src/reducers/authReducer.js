@@ -10,6 +10,11 @@ const auth = (state = initState, action) => {
         isAuthenticated: true,
         currentUser: { ...action.data, id: action.data.role_id }
       };
+    case 'REMOVE_CURRENT_USER':
+      return {
+        isAuthenticated: false,
+        currentUser: {}
+      };
     default:
       return state;
   }

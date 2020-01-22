@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { removeToken } from '../../actions/tokenActions';
+import { removeCurrentUser } from '../../actions/authActions';
 
-const Header = () => {
+const Header = ({ removeToken, removeCurrentUser }) => {
+  const history = useHistory();
   const [isOpen, setIsOpen] = useState(false);
 
   const svgPath = () => {
@@ -10,6 +16,12 @@ const Header = () => {
       );
     }
     return <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />;
+  };
+
+  const handleSignOut = () => {
+    removeToken();
+    removeCurrentUser();
+    history.push('/');
   };
 
   return (
@@ -37,27 +49,42 @@ const Header = () => {
           } sm:block sm:static sm:shadow-none sm:w-auto sm:flex sm:items-center sm:px-0`}
         >
           <a
-            href="/"
-            className="block mt-1 uppercase p-1 px-1 rounded text-teal-500 hover:bg-teal-200 sm:px-1 sm:mx-5 text-sm"
+            href="/doctors"
+            className="block mt-1 font-bold text-sm uppercase p-1 px-1 rounded text-teal-500 hover:bg-teal-200 sm:px-1 sm:mx-5 text-sm text-center"
           >
             Doctors
           </a>
           <a
-            href="/"
-            className="block mt-1 uppercase p-1 px-1 rounded text-teal-500 hover:bg-teal-200 sm:px-1 sm:mx-5 text-sm"
+            href="/specialities"
+            className="block mt-1 font-bold text-sm uppercase p-1 px-1 rounded text-teal-500 hover:bg-teal-200 sm:px-1 sm:mx-5 text-sm text-center"
           >
             Specialities
           </a>
-          <a
-            href="/"
-            className="block mt-1 uppercase p-1 px-1 rounded text-teal-500 hover:bg-teal-200 sm:px-1 sm:mx-5 mb-3 sm:mb-0"
+          <button
+            type="button"
+            onClick={handleSignOut}
+            className="w-full mt-1 font-bold text-sm uppercase p-1 px-1 rounded text-teal-500 hover:bg-teal-200 sm:px-1 sm:mx-5 mb-3 sm:mb-0"
           >
             Sign Out
-          </a>
+          </button>
         </div>
       </header>
     </div>
   );
 };
 
-export default Header;
+Header.propTypes = {
+  removeToken: PropTypes.func.isRequired,
+  removeCurrentUser: PropTypes.func.isRequired
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  removeToken: () => {
+    dispatch(removeToken());
+  },
+  removeCurrentUser: () => {
+    dispatch(removeCurrentUser());
+  }
+});
+
+export default connect(null, mapDispatchToProps)(Header);
