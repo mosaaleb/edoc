@@ -1,38 +1,40 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import PrivateRoute from './PrivateRoute';
-
+import {
+  Route,
+  Switch,
+  Redirect,
+  BrowserRouter
+} from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import App from '../App';
 import SignIn from '../auth/SignIn';
 import SignUp from '../auth/SignUp';
 import DoctorSignUp from '../auth/DoctorSignUp';
-import FourOhFour from '../FourOhFour';
-import Doctors from '../doctors/Doctors';
-import Specialities from '../specialities/Specialities';
 
-
-const Router = () => (
+const Router = ({ isAuthenticated }) => (
   <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={App} />
-      <Route exact path="/signin" component={SignIn} />
-      <Route exact path="/signup" component={SignUp} />
-      <Route exact path="/doctorsignup" component={DoctorSignUp} />
-
-      <PrivateRoute exact path="/doctors" component={Doctors} />
-      <PrivateRoute exact path="/specialities" component={Specialities} />
-      <Route component={FourOhFour} />
+      <Route exact path="/signin">
+        {isAuthenticated ? <Redirect to="/specialities" /> : <SignIn />}
+      </Route>
+      <Route exact path="/signup">
+        {isAuthenticated ? <Redirect to="/specialities" /> : <SignUp />}
+      </Route>
+      <Route exact path="/doctorsignup">
+        {isAuthenticated ? <Redirect to="/specialities" /> : <DoctorSignUp />}
+      </Route>
+      <Route path="/" component={App} />
     </Switch>
   </BrowserRouter>
 );
 
-export default Router;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
 
-// TODO: remove app if not needed
+Router.propTypes = {
+  isAuthenticated: PropTypes.bool.isRequired
+};
 
-
-/* <Route exact path="/">
-  {loggedIn ? <Redirect to="/dashboard" /> : <PublicHomePage />}
-</Route> */
-
-// https://reacttraining.com/react-router/web/api/Redirect
+export default connect(mapStateToProps)(Router);

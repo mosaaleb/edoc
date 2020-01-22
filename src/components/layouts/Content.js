@@ -5,14 +5,16 @@ import FourOhFour from '../FourOhFour';
 import Doctors from '../doctors/Doctors';
 import Specialities from '../specialities/Specialities';
 import LandingPage from '../landing/LandingPage';
+import DoctorProfile from '../doctors/DoctorProfile';
 
 const Content = () => (
-  <div className="w-full max-w-3xl bg-teal-100 mx-auto px-8">
+  <div className="w-full max-w-3xl mx-auto px-8 pt-10">
     <Switch>
       <Route exact path="/" component={LandingPage} />
-      <Route path="/doctors" component={Doctors} />
-      <Route path="/specialities" component={Specialities} />
+      <PrivateRoute exact path="/doctors" component={Doctors} />
+      <PrivateRoute exact path="/specialities" component={Specialities} />
       <PrivateRoute path="/specialities/:id/doctors" component={Doctors} />
+      <PrivateRoute path="/doctors/:id" component={DoctorProfile} />
       <Route component={FourOhFour} />
     </Switch>
   </div>
