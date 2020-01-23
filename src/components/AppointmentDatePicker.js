@@ -14,7 +14,6 @@ const AppointmentDatePicker = ({
   setIsDatePickerShowing
 }) => {
   const [selectedDateTime, setSelectedDateTime] = useState();
-  const fullName = `Dr. ${doctor.first_name} ${doctor.last_name}`;
 
   const likeSvg = (
     <svg width="16" height="16" fill="none" className="inline-block">
@@ -52,7 +51,9 @@ const AppointmentDatePicker = ({
             Book Appointment
           </button>
           <div className="w-full text-center mb-10">
-            <h3 className="font-bold text-gray-900">{fullName}</h3>
+            <h3 className="font-bold text-gray-900">
+              {`Dr. ${doctor.first_name} ${doctor.last_name}`}
+            </h3>
             <h5 className="text-gray-700 text-sm font-bold">
               {doctor.speciality}
             </h5>

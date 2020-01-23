@@ -8,7 +8,7 @@ import { setValidationErrors } from './validationsErrorsActions';
 import { setNotificationMessage } from './notificationActions';
 
 export const signUpWithUserData = (userData, history) => (
-  (dispatch) => Axios.post('http://localhost:3000/patients', {
+  (dispatch) => Axios.post('https://tranquil-river-82740.herokuapp.com/patients', {
     patient: { account_attributes: { ...userData } }
   }).then((res) => {
     dispatch(setToken(res.data.auth_token));
@@ -20,7 +20,7 @@ export const signUpWithUserData = (userData, history) => (
 );
 
 export const signUpWithDoctorData = (doctorData, history) => (
-  (dispatch) => Axios.post('http://localhost:3000/accounts', {
+  (dispatch) => Axios.post('https://tranquil-river-82740.herokuapp.com/accounts', {
     account: { ...doctorData, type: 'Doctor' }
   }).then((res) => {
     dispatch(setToken(res.data.auth_token));
@@ -32,7 +32,7 @@ export const signUpWithDoctorData = (doctorData, history) => (
 );
 
 export const signInWithEmailAndPassword = (userData, history) => (
-  (dispatch) => Axios.post('http://localhost:3000/authenticate', {
+  (dispatch) => Axios.post('https://tranquil-river-82740.herokuapp.com/authenticate', {
     authentication: { ...userData }
   }).then((res) => {
     dispatch(setToken(res.data.auth_token));
@@ -44,7 +44,7 @@ export const signInWithEmailAndPassword = (userData, history) => (
 );
 
 export const createAppointment = (doctor_id, date, token) => (
-  (dispatch) => Axios.post('http://localhost:3000/appointments', {
+  (dispatch) => Axios.post('https://tranquil-river-82740.herokuapp.com/appointments', {
     appointment: { doctor_id, date }
   }, {
     headers: {
