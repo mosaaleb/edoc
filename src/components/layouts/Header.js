@@ -6,10 +6,13 @@ import { removeToken } from '../../actions/tokenActions';
 import { removeCurrentUser } from '../../actions/authActions';
 import Notification from '../Notification';
 import { setNotificationMessage } from '../../actions/notificationActions';
+import SignedInLinks from './SignedInLinks';
+import SignedOutLinks from './SignedOutLinks';
 
 const Header = ({
   removeToken,
   notification,
+  isAuthenticated,
   removeCurrentUser,
   setNotificationMessage
 }) => {
@@ -57,27 +60,14 @@ const Header = ({
           <div
             className={`px-2 absolute w-full bg-teal-100 shadow-lg rounded-b-lg ${
               isOpen ? 'block' : 'hidden'
-            } sm:block sm:static sm:shadow-none sm:w-auto sm:flex sm:items-center sm:px-0`}
+            }
+            sm:block sm:static sm:shadow-none sm:w-auto sm:flex sm:items-center sm:px-0`}
           >
-            <a
-              href="/doctors"
-              className="block mt-1 font-bold text-sm uppercase p-1 px-1 rounded text-teal-500 hover:bg-teal-200 sm:px-1 sm:mx-5 text-sm text-center"
-            >
-              Doctors
-            </a>
-            <a
-              href="/specialities"
-              className="block mt-1 font-bold text-sm uppercase p-1 px-1 rounded text-teal-500 hover:bg-teal-200 sm:px-1 sm:mx-5 text-sm text-center"
-            >
-              Specialities
-            </a>
-            <button
-              type="button"
-              onClick={handleSignOut}
-              className="w-full mt-1 font-bold text-sm uppercase p-1 px-1 rounded text-teal-500 hover:bg-teal-200 sm:px-1 sm:mx-5 mb-3 sm:mb-0 focus:outline-none"
-            >
-              Sign Out
-            </button>
+            {isAuthenticated ? (
+              <SignedInLinks handleSignOut={handleSignOut} />
+            ) : (
+              <SignedOutLinks />
+            )}
           </div>
         </header>
       </div>
@@ -88,6 +78,7 @@ const Header = ({
 Header.propTypes = {
   removeToken: PropTypes.func.isRequired,
   notification: PropTypes.string.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
   removeCurrentUser: PropTypes.func.isRequired,
   setNotificationMessage: PropTypes.func.isRequired
 };
@@ -105,7 +96,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-  notification: state.notification
+  notification: state.notification,
+  isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
