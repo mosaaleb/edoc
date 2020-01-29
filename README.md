@@ -23,7 +23,7 @@ rails API [edoc-api](https://github.com/mosaaleb/edoc-api/)
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo Link](https://edoc-capstone.herokuapp.com/)
 
 ### Prerequisites
 - create-react-app
