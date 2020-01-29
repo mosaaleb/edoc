@@ -39,7 +39,7 @@ export const signInWithEmailAndPassword = (userData, history) => (
     dispatch(setCurrentUser(res.data.current_user));
     history.push('/specialities');
   }).catch((error) => {
-    dispatch(setValidationErrors(error.response.data.message));
+    dispatch(setNotificationMessage(error.response.data.message));
   })
 );
 

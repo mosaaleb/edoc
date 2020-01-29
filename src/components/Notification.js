@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const Notification = ({ message }) => {
+const Notification = ({ message, isError }) => {
   const [isHidden, setIsHidden] = useState(false);
   return (
     <div
-      className={`fixed flex justify-between top-0 left-0 w-full px-3 py-5 bg-gradient 
-      ${isHidden ? 'hidden' : 'block'} text-gray-100 z-50`}
+      className={`fixed flex justify-between top-0 left-0 w-full px-3 py-5
+      ${isError ? 'bg-red-400' : 'bg-gradient'}
+      ${isHidden ? 'hidden' : 'block'} z-50  text-gray-100`}
     >
       <p>{message}</p>
       <button
@@ -21,7 +22,8 @@ const Notification = ({ message }) => {
 };
 
 Notification.propTypes = {
-  message: PropTypes.string.isRequired
+  message: PropTypes.string.isRequired,
+  isError: PropTypes.bool.isRequired
 };
 
 export default Notification;
