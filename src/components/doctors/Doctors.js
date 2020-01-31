@@ -13,7 +13,7 @@ const Doctors = ({ token, notification }) => {
   useEffect(() => {
     const params = { speciality_id: id };
     const headers = { headers: { Authorization: `Bearer ${token}` } };
-    Axios.get('https://tranquil-river-82740.herokuapp.com/doctors', { params }, { headers })
+    Axios.get('http://localhost:3000//doctors', { params }, { headers })
       .then(
         (res) => {
           setDoctors(res.data);
@@ -28,7 +28,7 @@ const Doctors = ({ token, notification }) => {
         <h2 className="text-teal-500 font-bold mb-2">
           Results Showing all Doctors
         </h2>
-        <div className="">
+        <div>
           {doctors.map((doctor) => (
             <Doctor doctor={doctor} key={doctor.role_id} />
           ))}

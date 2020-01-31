@@ -8,7 +8,7 @@ const Specialities = ({ token }) => {
   const [specialities, setSpecialities] = useState([]);
 
   useEffect(() => {
-    Axios.get('https://tranquil-river-82740.herokuapp.com/specialities', {
+    Axios.get('http://localhost:3000/specialities', {
       headers: {
         Authorization: `Bearer ${token}`
       }
