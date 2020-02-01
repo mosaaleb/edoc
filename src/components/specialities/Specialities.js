@@ -8,13 +8,11 @@ const Specialities = ({ token }) => {
   const [specialities, setSpecialities] = useState([]);
 
   useEffect(() => {
-    Axios.get('http://localhost:3000/specialities', {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }).then((res) => {
-      setSpecialities(res.data);
-    });
+    const headers = { headers: { Authorization: `Bearer ${token}` } };
+    Axios.get('http://localhost:3000/specialities', headers)
+      .then((res) => {
+        setSpecialities(res.data);
+      });
   }, [token]);
 
   return (

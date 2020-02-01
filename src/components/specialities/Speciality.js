@@ -7,10 +7,13 @@ const Speciality = ({ speciality }) => {
   return (
     <button
       type="button"
-      onClick={() => history.push(`/specialities/${speciality.id}/doctors`)}
+      onClick={() => history
+        .push('/doctors', { speciality: speciality.speciality })}
       className="text-center w-2/5 my-6 mx-3 p-4 bg-teal-100 shadow-md rounded focus:outline-none active:bg-teal-200"
     >
-      <p className="text-teal-500 font-bold font-montserrat">{speciality.speciality}</p>
+      <p className="text-teal-500 font-bold font-montserrat">
+        {speciality.speciality}
+      </p>
     </button>
   );
 };
