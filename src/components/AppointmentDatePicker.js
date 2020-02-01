@@ -25,7 +25,7 @@ const AppointmentDatePicker = ({
   );
 
   const handleClick = () => {
-    createAppointment(doctor.role_id, selectedDateTime, token);
+    createAppointment(doctor.id, selectedDateTime, token);
   };
 
   return (
@@ -87,7 +87,7 @@ AppointmentDatePicker.propTypes = {
   createAppointment: PropTypes.func.isRequired,
   setIsDatePickerShowing: PropTypes.func.isRequired,
   doctor: PropTypes.shape({
-    role_id: PropTypes.number,
+    id: PropTypes.number,
     first_name: PropTypes.string,
     last_name: PropTypes.string,
     speciality: PropTypes.string

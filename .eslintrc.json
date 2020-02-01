@@ -26,6 +26,7 @@
         "comma-dangle": ["error", "never"],
         "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
         "import/no-unresolved": "off",
-        "no-shadow": "off"
+        "no-shadow": "off",
+        "camelcase": ["off", { "properties" : "never"} ]
     }
 }

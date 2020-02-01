@@ -14,6 +14,7 @@ export const signUpWithUserData = (userData, history) => (
     dispatch(setToken(res.data.auth_token));
     dispatch(setCurrentUser(res.data.current_user));
     history.push('/specialities');
+    dispatch(setNotificationMessage('Welcome Aboard'));
   }).catch((error) => {
     dispatch(setValidationErrors(error.response.data.message));
   })
@@ -38,6 +39,7 @@ export const signInWithEmailAndPassword = (userData, history) => (
     dispatch(setToken(res.data.auth_token));
     dispatch(setCurrentUser(res.data.current_user));
     history.push('/specialities');
+    dispatch(setNotificationMessage('Welcome Back!'));
   }).catch((error) => {
     dispatch(setNotificationMessage(error.response.data.message));
   })

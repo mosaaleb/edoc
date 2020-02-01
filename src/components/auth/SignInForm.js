@@ -4,9 +4,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { signInWithEmailAndPassword } from '../../actions/asyncActions';
-import Notification from '../Notification';
 
-const SignInForm = ({ signInWithEmailAndPassword, notification, history }) => {
+const SignInForm = ({ signInWithEmailAndPassword, history }) => {
   const [inputFields, setInputFields] = useState({
     email: '',
     password: ''
@@ -19,7 +18,6 @@ const SignInForm = ({ signInWithEmailAndPassword, notification, history }) => {
 
   return (
     <form className="flex flex-col" onSubmit={handleSubmit} noValidate>
-      {notification ? <Notification message={notification} isError /> : null}
       <input
         type="email"
         placeholder="Email"
@@ -49,7 +47,6 @@ const SignInForm = ({ signInWithEmailAndPassword, notification, history }) => {
 
 SignInForm.propTypes = {
   history: ReactRouterPropTypes.history.isRequired,
-  notification: PropTypes.string.isRequired,
   signInWithEmailAndPassword: PropTypes.func.isRequired
 };
 
