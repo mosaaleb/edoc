@@ -14,7 +14,6 @@ const Content = () => (
       <Route exact path="/" component={LandingPage} />
       <PrivateRoute exact path="/doctors" component={Doctors} />
       <PrivateRoute exact path="/specialities" component={Specialities} />
-      <PrivateRoute path="/specialities/:id/doctors" component={Doctors} />
       <PrivateRoute path="/doctors/:id" component={DoctorProfile} />
       <PrivateRoute path="/appointments" component={Appointments} />
       <Route component={FourOhFour} />

@@ -5,9 +5,17 @@ import AppointmentDatePicker from '../AppointmentDatePicker';
 import avatar from '../../assets/avatar.jpg';
 
 const Doctor = ({ doctor }) => {
+  const {
+    fees,
+    first_name,
+    last_name,
+    speciality,
+    years_of_experience
+  } = doctor;
+
   const [isDatePickerShowing, setIsDatePickerShowing] = useState(false);
 
-  const fullName = `Dr. ${doctor.first_name} ${doctor.last_name}`;
+  const fullName = `Dr. ${first_name} ${last_name}`;
 
   const likeSvg = (
     <svg width="16" height="16" fill="none" className="inline-block">
@@ -37,12 +45,12 @@ const Doctor = ({ doctor }) => {
         <div className="w-full">
           <h3 className="font-bold text-gray-900">{fullName}</h3>
           <h5 className="text-gray-700 text-sm font-bold">
-            {doctor.speciality}
+            {speciality}
           </h5>
           <p className="text-gray-600 text-sm">MD- General Medicine</p>
           <div className="flex justify-between font-bold text-sm mt-3">
-            <p>$200</p>
-            <p>14 Years of exp.</p>
+            <p>{`$${fees}`}</p>
+            <p>{`${years_of_experience} Years of exp.`}</p>
             <p>
               <button type="button" className="focus:outline-none">
                 {likeSvg}
@@ -78,10 +86,12 @@ const Doctor = ({ doctor }) => {
 
 Doctor.propTypes = {
   doctor: PropTypes.shape({
-    role_id: PropTypes.number,
+    fees: PropTypes.number,
+    id: PropTypes.number,
     first_name: PropTypes.string,
     last_name: PropTypes.string,
-    speciality: PropTypes.string
+    speciality: PropTypes.string,
+    years_of_experience: PropTypes.number
   }).isRequired
 };
 
