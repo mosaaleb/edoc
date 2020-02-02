@@ -20,7 +20,7 @@ const Doctors = ({ token }) => {
 
   useEffect(() => {
     const headers = { Authorization: `Bearer ${token}` };
-    Axios.get('http://localhost:3000/doctors', { headers, params }).then(
+    Axios.get('https://tranquil-river-82740.herokuapp.com/doctors', { headers, params }).then(
       (res) => {
         setDoctors(res.data);
       }

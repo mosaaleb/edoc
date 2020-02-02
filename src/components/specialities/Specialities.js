@@ -9,7 +9,7 @@ const Specialities = ({ token }) => {
 
   useEffect(() => {
     const headers = { headers: { Authorization: `Bearer ${token}` } };
-    Axios.get('http://localhost:3000/specialities', headers)
+    Axios.get('https://tranquil-river-82740.herokuapp.com/specialities', headers)
       .then((res) => {
         setSpecialities(res.data);
       });

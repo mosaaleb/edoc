@@ -8,7 +8,7 @@ const Appointments = ({ token }) => {
   const [appointments, setAppointments] = useState([]);
 
   useEffect(() => {
-    Axios.get('http://localhost:3000/appointments', {
+    Axios.get('https://tranquil-river-82740.herokuapp.com/appointments', {
       headers: {
         Authorization: `Bearer ${token}`
       }
