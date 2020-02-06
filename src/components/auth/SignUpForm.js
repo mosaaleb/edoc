@@ -5,8 +5,17 @@ import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import ValidationError from '../ValidationError';
 import { signUpWithUserData } from '../../actions/asyncActions';
+import Loading from '../Loading';
+import { setIsLoading, resetIsLoading } from '../../actions/loadingActions';
 
-const SignUpForm = ({ signUpWithUserData, validationErrors, history }) => {
+const SignUpForm = ({
+  history,
+  loading,
+  setIsLoading,
+  resetIsLoading,
+  validationErrors,
+  signUpWithUserData
+}) => {
   const { isValid, errors } = validationErrors;
   const [inputFields, setInputFields] = useState({
     email: '',
@@ -16,10 +25,12 @@ const SignUpForm = ({ signUpWithUserData, validationErrors, history }) => {
     password_confirmation: ''
   });
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    signUpWithUserData(inputFields, history);
+    setIsLoading();
+    signUpWithUserData(inputFields, history).then(() => {
+      resetIsLoading();
+    });
   };
 
   return (
@@ -89,7 +100,9 @@ const SignUpForm = ({ signUpWithUserData, validationErrors, history }) => {
         // prettier-ignore
         onChange={(e) => setInputFields({ ...inputFields, password_confirmation: e.target.value })}
         className={`py-2 px-4 rounded-full focus:outline-none my-3 shadow-md 
-        ${errors['account.password_confirmation'] ? 'border border-red-600' : ''}`}
+        ${
+          errors['account.password_confirmation'] ? 'border border-red-600' : ''
+        }`}
       />
       <ValidationError
         inputField="Password Confirmation"
@@ -98,9 +111,9 @@ const SignUpForm = ({ signUpWithUserData, validationErrors, history }) => {
       />
       <button
         type="submit"
-        className="uppercase text-gray-100 py-2 rounded-full bg-gradient focus:outline-none my-2 shadow-md"
+        className="uppercase text-gray-100 h-12 rounded-full bg-gradient focus:outline-none my-2 shadow-md"
       >
-        Create Account
+        {loading ? <Loading /> : 'Create Account'}
       </button>
     </form>
   );
@@ -108,6 +121,9 @@ const SignUpForm = ({ signUpWithUserData, validationErrors, history }) => {
 
 SignUpForm.propTypes = {
   history: ReactRouterPropTypes.history.isRequired,
+  loading: PropTypes.bool.isRequired,
+  setIsLoading: PropTypes.func.isRequired,
+  resetIsLoading: PropTypes.func.isRequired,
   signUpWithUserData: PropTypes.func.isRequired,
   validationErrors: PropTypes.shape({
     isValid: PropTypes.bool.isRequired,
@@ -117,9 +133,12 @@ SignUpForm.propTypes = {
 
 const mapStateToProps = (state) => ({
   notification: state.notification,
+  loading: state.loading,
   validationErrors: state.validationErrors
 });
 
-export default connect(mapStateToProps, { signUpWithUserData })(
-  withRouter(SignUpForm)
-);
+export default connect(mapStateToProps, {
+  signUpWithUserData,
+  setIsLoading,
+  resetIsLoading
+})(withRouter(SignUpForm));

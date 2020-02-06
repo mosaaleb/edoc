@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import AppointmentDatePicker from '../AppointmentDatePicker';
 import avatar from '../../assets/avatar.jpg';
+import { resetValidationErrors } from '../../actions/validationsErrorsActions';
 
-const Doctor = ({ doctor }) => {
+const Doctor = ({ doctor, resetValidationErrors }) => {
   const {
     fees,
     first_name,
@@ -24,6 +26,10 @@ const Doctor = ({ doctor }) => {
       />
     </svg>
   );
+
+  useEffect(() => {
+    resetValidationErrors();
+  }, [isDatePickerShowing, resetValidationErrors]);
 
   return (
     <div className="shadow-md p-4 mb-6">
@@ -91,7 +97,14 @@ Doctor.propTypes = {
     last_name: PropTypes.string,
     speciality: PropTypes.string,
     years_of_experience: PropTypes.number
-  }).isRequired
+  }).isRequired,
+  resetValidationErrors: PropTypes.func.isRequired
 };
 
-export default Doctor;
+const mapDispatchToProps = (dispatch) => ({
+  resetValidationErrors: () => {
+    dispatch(resetValidationErrors());
+  }
+});
+
+export default connect(null, mapDispatchToProps)(Doctor);

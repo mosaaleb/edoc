@@ -54,7 +54,7 @@ const Header = ({
           </div>
         </div>
         <div
-          className={`px-2 absolute w-full bg-teal-100 shadow-lg rounded-b-lg ${
+          className={`px-2 absolute  w-full bg-teal-100 shadow-lg rounded-b-lg ${
             isOpen ? 'block' : 'hidden'
           }
             sm:block sm:static sm:shadow-none sm:w-auto sm:flex sm:items-center sm:px-0`}

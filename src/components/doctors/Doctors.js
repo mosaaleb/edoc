@@ -7,8 +7,17 @@ import Doctor from './Doctor';
 import Filter from './Filter';
 import { removeCurrentUser } from '../../actions/authActions';
 import { setNotificationMessage } from '../../actions/notificationActions';
+import { resetIsLoading, setIsLoading } from '../../actions/loadingActions';
+import Loading from '../Loading';
 
-const Doctors = ({ token, setNotificationMessage, removeCurrentUser }) => {
+const Doctors = ({
+  token,
+  loading,
+  setIsLoading,
+  resetIsLoading,
+  removeCurrentUser,
+  setNotificationMessage
+}) => {
   const history = useHistory();
   const [doctors, setDoctors] = useState([]);
   const [isFilterHidden, setIsFilterHidden] = useState(true);
@@ -20,33 +29,48 @@ const Doctors = ({ token, setNotificationMessage, removeCurrentUser }) => {
     speciality
   });
 
+  const renderDoctors = doctors.map((doctor) => (
+    <Doctor doctor={doctor} key={doctor.id} />
+  ));
+
   useEffect(() => {
+    setIsLoading();
     const headers = { Authorization: `Bearer ${token}` };
-    Axios.get('https://tranquil-river-82740.herokuapp.com/doctors', { headers, params }).then(
-      (res) => {
+    Axios.get('https://tranquil-river-82740.herokuapp.com/doctors', {
+      headers,
+      params
+    })
+      .then((res) => {
         setDoctors(res.data);
-      }
-    ).catch(() => {
-      removeCurrentUser();
-      history.push('/signin');
-      setNotificationMessage('Session expired! Please log in to continue');
-    });
-  }, [token, params, history, setNotificationMessage, removeCurrentUser]);
+      })
+      .catch(() => {
+        removeCurrentUser();
+        history.push('/signin');
+        setNotificationMessage('Session expired! Please log in to continue');
+      })
+      .then(() => {
+        resetIsLoading();
+      });
+  }, [
+    token,
+    params,
+    history,
+    setIsLoading,
+    resetIsLoading,
+    removeCurrentUser,
+    setNotificationMessage
+  ]);
 
   return (
     <div className="p-4 font-montserrat">
       <h2 className="text-teal-500 font-bold mb-2">
         Results Showing all Doctors
       </h2>
-      <div>
-        {doctors.map((doctor) => (
-          <Doctor doctor={doctor} key={doctor.id} />
-        ))}
-      </div>
+      <div>{loading ? <Loading /> : renderDoctors}</div>
       <button
         type="button"
         onClick={() => setIsFilterHidden(!isFilterHidden)}
-        className="fixed top-0 right-0 mt-20 mr-5 z-50 p-3 rounded-full bg-gradient text-gray-100 focus:outline-none shadow-lg"
+        className="fixed top-0 right-0 mt-20 mr-5 z-30 p-3 rounded-full bg-gradient text-gray-100 focus:outline-none shadow-lg"
       >
         {isFilterHidden ? (
           <svg className="h-6 w-6 fill-current" viewBox="0 0 24 24">
@@ -62,7 +86,11 @@ const Doctors = ({ token, setNotificationMessage, removeCurrentUser }) => {
         )}
       </button>
       {isFilterHidden ? null : (
-        <Filter setIsFilterHidden={setIsFilterHidden} setParams={setParams} params={params} />
+        <Filter
+          setIsFilterHidden={setIsFilterHidden}
+          setParams={setParams}
+          params={params}
+        />
       )}
     </div>
   );
@@ -70,12 +98,16 @@ const Doctors = ({ token, setNotificationMessage, removeCurrentUser }) => {
 
 Doctors.propTypes = {
   token: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
+  setIsLoading: PropTypes.func.isRequired,
+  resetIsLoading: PropTypes.func.isRequired,
   removeCurrentUser: PropTypes.func.isRequired,
   setNotificationMessage: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  token: state.token
+  token: state.token,
+  loading: state.loading
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -84,6 +116,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
   setNotificationMessage: (msg) => {
     dispatch(setNotificationMessage(msg));
+  },
+  setIsLoading: () => {
+    dispatch(setIsLoading());
+  },
+  resetIsLoading: () => {
+    dispatch(resetIsLoading());
   }
 });
 

@@ -4,8 +4,16 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { signInWithEmailAndPassword } from '../../actions/asyncActions';
+import { setIsLoading, resetIsLoading } from '../../actions/loadingActions';
+import Loading from '../Loading';
 
-const SignInForm = ({ signInWithEmailAndPassword, history }) => {
+const SignInForm = ({
+  history,
+  loading,
+  setIsLoading,
+  resetIsLoading,
+  signInWithEmailAndPassword
+}) => {
   const [inputFields, setInputFields] = useState({
     email: '',
     password: ''
@@ -13,7 +21,10 @@ const SignInForm = ({ signInWithEmailAndPassword, history }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(inputFields, history);
+    setIsLoading();
+    signInWithEmailAndPassword(inputFields, history).then(() => {
+      resetIsLoading();
+    });
   };
 
   return (
@@ -37,9 +48,9 @@ const SignInForm = ({ signInWithEmailAndPassword, history }) => {
       />
       <button
         type="submit"
-        className="uppercase text-gray-100 py-2 rounded-full bg-gradient focus:outline-none my-2 shadow-md"
+        className="uppercase text-gray-100 h-12 rounded-full bg-gradient focus:outline-none my-2 shadow-md"
       >
-        Sign In
+        {loading ? <Loading /> : 'Sign In'}
       </button>
     </form>
   );
@@ -47,13 +58,18 @@ const SignInForm = ({ signInWithEmailAndPassword, history }) => {
 
 SignInForm.propTypes = {
   history: ReactRouterPropTypes.history.isRequired,
+  loading: PropTypes.bool.isRequired,
+  setIsLoading: PropTypes.func.isRequired,
+  resetIsLoading: PropTypes.func.isRequired,
   signInWithEmailAndPassword: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  notification: state.notification
+  loading: state.loading
 });
 
-export default connect(mapStateToProps, { signInWithEmailAndPassword })(
-  withRouter(SignInForm)
-);
+export default connect(mapStateToProps, {
+  setIsLoading,
+  resetIsLoading,
+  signInWithEmailAndPassword
+})(withRouter(SignInForm));
