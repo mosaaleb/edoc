@@ -16,7 +16,3 @@ const LandingPage = () => (
 
 export default LandingPage;
 
-/* <Link to="/signup">I am Searching for a Doctor</Link>
-  <Link to="/doctorsignup">I am a Doctor</Link>
-  Or
-  <Link to="/signin">Sign In</Link> */

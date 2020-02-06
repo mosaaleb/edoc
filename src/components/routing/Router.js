@@ -15,7 +15,7 @@ import Notification from '../Notification';
 
 const Router = ({ isAuthenticated, notification }) => (
   <>
-    {notification ? <Notification message={notification} /> : null}
+    {notification ? <Notification /> : null}
     <BrowserRouter>
       <Switch>
         <Route exact path="/signin">
@@ -33,14 +33,20 @@ const Router = ({ isAuthenticated, notification }) => (
   </>
 );
 
+
+Router.defaultProps = {
+  notification: null
+};
+
+Router.propTypes = {
+  notification: PropTypes.string,
+  isAuthenticated: PropTypes.bool.isRequired
+};
+
+
 const mapStateToProps = (state) => ({
   notification: state.notification,
   isAuthenticated: state.auth.isAuthenticated
 });
-
-Router.propTypes = {
-  notification: PropTypes.string.isRequired,
-  isAuthenticated: PropTypes.bool.isRequired
-};
 
 export default connect(mapStateToProps)(Router);

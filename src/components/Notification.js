@@ -1,18 +1,26 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { resetNotificationMessage } from '../actions/notificationActions';
 
-const Notification = ({ message }) => {
+
+const Notification = ({ notification, resetNotificationMessage }) => {
   const [isHidden, setIsHidden] = useState(false);
+
+  const hideNotification = () => {
+    setIsHidden(true);
+    resetNotificationMessage();
+  };
+
   return (
     <div
-      className={`fixed flex justify-between top-0 left-0 w-full px-3 py-5
-      bg-red-400
+      className={`fixed flex justify-between top-0 left-0 w-full px-3 py-5 bg-gradient
       ${isHidden ? 'hidden' : 'block'} z-50 text-gray-100`}
     >
-      <p>{message}</p>
+      <p>{notification}</p>
       <button
         type="button"
-        onClick={() => setIsHidden(true)}
+        onClick={hideNotification}
         className="focus:outline-none"
       >
         ×
@@ -21,8 +29,23 @@ const Notification = ({ message }) => {
   );
 };
 
-Notification.propTypes = {
-  message: PropTypes.string.isRequired
+Notification.defaultProps = {
+  notification: null
 };
 
-export default Notification;
+Notification.propTypes = {
+  notification: PropTypes.string,
+  resetNotificationMessage: PropTypes.func.isRequired
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  resetNotificationMessage: () => {
+    dispatch(resetNotificationMessage());
+  }
+});
+
+const mapStateToProps = (state) => ({
+  notification: state.notification
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Notification);

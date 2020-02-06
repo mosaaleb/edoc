@@ -1,44 +1,31 @@
-// import configureStore from './configureStore';
+import Axios from 'axios';
+import configureStore from './configureStore';
 
-// const configureAxios = () => {
-//   const store = configureStore();
-//   const state = store.getState();
+const store = configureStore();
+const state = store.getState();
 
-//   console.log(state.token);
+const instance = Axios.create({
+  baseURL: 'https://tranquil-river-82740.herokuapp.com'
+});
 
-//   const axiosConfig = {
-//     headers: {
-//       'Content-Type': 'application/json;charset=UTF-8',
-//       'Access-Control-Allow-Origin': '*',
-//       Authorization: `Bearer ${state.token}`
-//     }
-//   };
+instance.defaults.headers.common.Authorization = `Bearer ${state.token}`;
 
-//   return axiosConfig;
+export default instance;
+// const axiosConfig = {
+//   headers: {
+//     'Content-Type': 'application/json;charset=UTF-8',
+//     'Access-Control-Allow-Origin': '*',
+//     Authorization: `Bearer ${state.token}`
+//   }
 // };
 
-// export default configureAxios;
 
-
-const axiosConfig = {
-  headers: {
-    'Content-Type': 'application/json;charset=UTF-8',
-    'Access-Control-Allow-Origin': '*',
-    Authorization: 'Bearer'
-  }
-};
-
-export default axiosConfig;
-
-// var postData = {
-//   email: "test@test.com",
-//   password: "password"
+// const axiosConfig = {
+//   headers: {
+//     'Content-Type': 'application/json;charset=UTF-8',
+//     'Access-Control-Allow-Origin': '*',
+//     Authorization: 'Bearer'
+//   }
 // };
 
-// axios.post('http://<host>:<port>/<path>', postData, axiosConfig)
-// .then((res) => {
-//   console.log("RESPONSE RECEIVED: ", res);
-// })
-// .catch((err) => {
-//   console.log("AXIOS ERROR: ", err);
-// })
+// export default axiosConfig;
