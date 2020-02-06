@@ -6,7 +6,8 @@ module.exports = {
         montserrat: ['Montserrat', 'sans-serif']
       },
       colors: {
-        'smoke-light': 'rgba(0, 0, 0, 0.4)'
+        'smoke-light': 'rgba(0, 0, 0, 0.4)',
+        'transparent-white': 'rgba(255, 255, 255, .75)'
       },
       width: {
         '6/13': '47%'
