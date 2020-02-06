@@ -7,6 +7,8 @@ import { setCurrentUser } from './authActions';
 import { setValidationErrors } from './validationsErrorsActions';
 import { setNotificationMessage } from './notificationActions';
 
+const { token } = JSON.parse(localStorage.getItem('state'));
+
 export const signUpWithUserData = (userData, history) => (
   (dispatch) => Axios.post('https://tranquil-river-82740.herokuapp.com/patients', {
     patient: { account_attributes: { ...userData } }
@@ -45,7 +47,7 @@ export const signInWithEmailAndPassword = (userData, history) => (
   })
 );
 
-export const createAppointment = (doctor_id, date, token) => (
+export const createAppointment = (doctor_id, date) => (
   (dispatch) => Axios.post('https://tranquil-river-82740.herokuapp.com/appointments', {
     appointment: { doctor_id, date }
   }, {

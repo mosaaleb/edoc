@@ -7,7 +7,6 @@ import { createAppointment } from '../actions/asyncActions';
 import '../stylesheets/datePicker.css';
 
 const AppointmentDatePicker = ({
-  token,
   doctor,
   validationErrors,
   createAppointment,
@@ -25,7 +24,7 @@ const AppointmentDatePicker = ({
   );
 
   const handleClick = () => {
-    createAppointment(doctor.id, selectedDateTime, token);
+    createAppointment(doctor.id, selectedDateTime);
   };
 
   return (
@@ -41,6 +40,11 @@ const AppointmentDatePicker = ({
           inputField="Date"
           isValid={validationErrors.isValid}
           error={validationErrors.errors.date}
+        />
+        <ValidationError
+          inputField=""
+          isValid={validationErrors.isValid}
+          error={validationErrors.errors.doctor}
         />
         <div className="w-4/5 flex flex-col items-center">
           <button
@@ -83,7 +87,6 @@ const AppointmentDatePicker = ({
 };
 
 AppointmentDatePicker.propTypes = {
-  token: PropTypes.string.isRequired,
   createAppointment: PropTypes.func.isRequired,
   setIsDatePickerShowing: PropTypes.func.isRequired,
   doctor: PropTypes.shape({
