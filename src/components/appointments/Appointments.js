@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import Axios from 'axios';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Appointment from './Appointment';
+import { removeCurrentUser } from '../../actions/authActions';
+import { setNotificationMessage } from '../../actions/notificationActions';
 
-const Appointments = ({ token }) => {
+const Appointments = ({ token, setNotificationMessage, removeCurrentUser }) => {
+  const history = useHistory();
   const [appointments, setAppointments] = useState([]);
 
   useEffect(() => {
@@ -14,6 +18,10 @@ const Appointments = ({ token }) => {
       }
     }).then((res) => {
       setAppointments(res.data);
+    }).catch(() => {
+      removeCurrentUser();
+      history.push('/signin');
+      setNotificationMessage('Session expired! Please log in to continue');
     });
   }, [token]);
 
@@ -28,11 +36,22 @@ const Appointments = ({ token }) => {
 };
 
 Appointments.propTypes = {
-  token: PropTypes.string.isRequired
+  token: PropTypes.string.isRequired,
+  removeCurrentUser: PropTypes.func.isRequired,
+  setNotificationMessage: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
   token: state.token
 });
 
-export default connect(mapStateToProps)(Appointments);
+const mapDispatchToProps = (dispatch) => ({
+  removeCurrentUser: () => {
+    dispatch(removeCurrentUser());
+  },
+  setNotificationMessage: (msg) => {
+    dispatch(setNotificationMessage(msg));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Appointments);

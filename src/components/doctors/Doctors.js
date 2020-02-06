@@ -5,8 +5,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Doctor from './Doctor';
 import Filter from './Filter';
+import { removeCurrentUser } from '../../actions/authActions';
+import { setNotificationMessage } from '../../actions/notificationActions';
 
-const Doctors = ({ token }) => {
+const Doctors = ({ token, setNotificationMessage, removeCurrentUser }) => {
   const history = useHistory();
   const [doctors, setDoctors] = useState([]);
   const [isFilterHidden, setIsFilterHidden] = useState(true);
@@ -24,7 +26,11 @@ const Doctors = ({ token }) => {
       (res) => {
         setDoctors(res.data);
       }
-    );
+    ).catch(() => {
+      removeCurrentUser();
+      history.push('/signin');
+      setNotificationMessage('Session expired! Please log in to continue');
+    });
   }, [token, params]);
 
   return (
@@ -63,11 +69,22 @@ const Doctors = ({ token }) => {
 };
 
 Doctors.propTypes = {
-  token: PropTypes.string.isRequired
+  token: PropTypes.string.isRequired,
+  removeCurrentUser: PropTypes.func.isRequired,
+  setNotificationMessage: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
   token: state.token
 });
 
-export default connect(mapStateToProps)(Doctors);
+const mapDispatchToProps = (dispatch) => ({
+  removeCurrentUser: () => {
+    dispatch(removeCurrentUser());
+  },
+  setNotificationMessage: (msg) => {
+    dispatch(setNotificationMessage(msg));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Doctors);

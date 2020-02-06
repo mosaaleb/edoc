@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import Axios from 'axios';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Speciality from './Speciality';
+import { removeCurrentUser } from '../../actions/authActions';
+import { setNotificationMessage } from '../../actions/notificationActions';
 
-const Specialities = ({ token }) => {
+const Specialities = ({ token, setNotificationMessage, removeCurrentUser }) => {
+  const history = useHistory();
   const [specialities, setSpecialities] = useState([]);
 
   useEffect(() => {
@@ -12,6 +16,10 @@ const Specialities = ({ token }) => {
     Axios.get('https://tranquil-river-82740.herokuapp.com/specialities', headers)
       .then((res) => {
         setSpecialities(res.data);
+      }).catch(() => {
+        removeCurrentUser();
+        history.push('/signin');
+        setNotificationMessage('Session expired! Please log in to continue');
       });
   }, [token]);
 
@@ -38,11 +46,22 @@ const Specialities = ({ token }) => {
 };
 
 Specialities.propTypes = {
-  token: PropTypes.string.isRequired
+  token: PropTypes.string.isRequired,
+  removeCurrentUser: PropTypes.func.isRequired,
+  setNotificationMessage: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
   token: state.token
 });
 
-export default connect(mapStateToProps)(Specialities);
+const mapDispatchToProps = (dispatch) => ({
+  removeCurrentUser: () => {
+    dispatch(removeCurrentUser());
+  },
+  setNotificationMessage: (msg) => {
+    dispatch(setNotificationMessage(msg));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Specialities);
