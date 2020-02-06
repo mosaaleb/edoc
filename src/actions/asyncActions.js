@@ -3,7 +3,7 @@
 import Axios from 'axios';
 import { setToken } from './tokenActions';
 import { setCurrentUser } from './authActions';
-import { setValidationErrors } from './validationsErrorsActions';
+import { setValidationErrors, resetValidationErrors } from './validationsErrorsActions';
 import { setNotificationMessage } from './notificationActions';
 
 const { token } = JSON.parse(localStorage.getItem('state'));
@@ -55,7 +55,10 @@ export const createAppointment = (doctor_id, date) => (
     }
   }).then((res) => {
     dispatch(setNotificationMessage(res.data.message));
+    dispatch(resetValidationErrors());
+    return 'success';
   }).catch((error) => {
     dispatch(setValidationErrors(error.response.data.message));
+    return 'failure';
   })
 );

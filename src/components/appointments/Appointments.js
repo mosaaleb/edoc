@@ -23,7 +23,7 @@ const Appointments = ({ token, setNotificationMessage, removeCurrentUser }) => {
       history.push('/signin');
       setNotificationMessage('Session expired! Please log in to continue');
     });
-  }, [token]);
+  }, [token, history, setNotificationMessage, removeCurrentUser]);
 
   return (
     <div className="p-4 font-montserrat">

@@ -7,7 +7,7 @@ import chat from '../../assets/chat.png';
 import doctor from '../../assets/doctor.png';
 
 const LandingPage = () => (
-  <div className="my-10 font-montserrat">
+  <div className="p-4 font-montserrat">
     <Illustration image={all} heading="All-In-One" title="App" />
     <Illustration image={chat} heading="One click" title="Online Chat" />
     <Illustration image={doctor} heading="Ask the" title="Expert" />
@@ -15,4 +15,3 @@ const LandingPage = () => (
 );
 
 export default LandingPage;
-

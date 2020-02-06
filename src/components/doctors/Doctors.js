@@ -31,7 +31,7 @@ const Doctors = ({ token, setNotificationMessage, removeCurrentUser }) => {
       history.push('/signin');
       setNotificationMessage('Session expired! Please log in to continue');
     });
-  }, [token, params]);
+  }, [token, params, history, setNotificationMessage, removeCurrentUser]);
 
   return (
     <div className="p-4 font-montserrat">
