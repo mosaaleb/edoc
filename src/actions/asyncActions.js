@@ -2,11 +2,10 @@
 
 import Axios from 'axios';
 import { setToken } from './tokenActions';
+import configureStore from '../configureStore';
 import { setCurrentUser } from './authActions';
 import { setValidationErrors, resetValidationErrors } from './validationsErrorsActions';
 import { setNotificationMessage } from './notificationActions';
-
-const { token } = JSON.parse(localStorage.getItem('state'));
 
 export const signUpWithUserData = (userData, history) => (
   (dispatch) => Axios.post('https://tranquil-river-82740.herokuapp.com/patients', {
@@ -46,8 +45,11 @@ export const signInWithEmailAndPassword = (userData, history) => (
   })
 );
 
-export const createAppointment = (doctor_id, date) => (
-  (dispatch) => Axios.post('https://tranquil-river-82740.herokuapp.com/appointments', {
+export const createAppointment = (doctor_id, date) => {
+  const store = configureStore();
+  const state = store.getState();
+  const { token } = state;
+  return (dispatch) => Axios.post('https://tranquil-river-82740.herokuapp.com/appointments', {
     appointment: { doctor_id, date }
   }, {
     headers: {
@@ -60,5 +62,5 @@ export const createAppointment = (doctor_id, date) => (
   }).catch((error) => {
     dispatch(setValidationErrors(error.response.data.message));
     return 'failure';
-  })
-);
+  });
+};

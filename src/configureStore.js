@@ -21,7 +21,7 @@ const configureStore = () => {
     });
   });
 
-  window.store = store.getState();
+  window.store = store;
   return store;
 };
 
