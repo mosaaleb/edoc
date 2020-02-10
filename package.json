@@ -18,14 +18,16 @@
     "react-scripts": "3.3.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "tailwindcss": "^1.1.4"
+    "tailwindcss": "^1.2.0"
   },
   "scripts": {
-    "tailwind:css": "tailwind build src/stylesheets/tailwind/tailwind.css -c tailwind.js -o src/stylesheets/tailwind.css",
-    "start": "npm run tailwind:css && PORT=3009 react-scripts start",
-    "build": "npm run tailwind:css && react-scripts build",
+    "start": "PORT=3009 react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:styles": "postcss src/stylesheets/tailwind/tailwind.css -o src/stylesheets/tailwind.css",
+    "prebuild": "NODE_ENV=production npm run build:styles",
+    "prestart": "npm run build:styles"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -47,12 +49,15 @@
     ]
   },
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^2.0.6",
+    "autoprefixer": "^9.7.4",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-import": "^2.20.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.18.0",
     "eslint-plugin-react-hooks": "^1.7.0",
+    "postcss-cli": "^7.1.0",
     "prettier": "^1.19.1"
   }
 }
