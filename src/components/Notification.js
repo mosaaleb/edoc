@@ -14,14 +14,14 @@ const Notification = ({ notification, resetNotificationMessage }) => {
 
   return (
     <div
-      className={`fixed flex justify-between top-0 left-0 w-full px-3 py-5 bg-gradient
-      ${isHidden ? 'hidden' : 'block'} z-50 text-gray-100`}
+      className={`fixed flex justify-between items-center top-0 left-0 w-full px-3 py-5 bg-gradient
+      ${isHidden ? 'hidden' : 'block'} z-50 text-gray-100 font-montserrat`}
     >
       <p>{notification}</p>
       <button
         type="button"
         onClick={hideNotification}
-        className="focus:outline-none"
+        className="focus:outline-none text-2xl leading-none"
       >
         ×
       </button>

@@ -15,12 +15,6 @@
   cursor: pointer;
 }
 
-/* .rdtPicker button {
-  border: none;
-  background: none;
-  cursor: pointer;
-} */
-
 .rdtPicker thead button {
   width: 100%;
   height: 100%;
@@ -30,7 +24,6 @@ td.rdtMonth,
 td.rdtYear {
   cursor: pointer;
 }
-
 
 .rdtCounters {
   display: inline-block;
