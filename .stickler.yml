@@ -4,3 +4,4 @@ linters:
 files:
     ignore:
       - 'tailwind.js'
+      - 'postcss.config.js'
