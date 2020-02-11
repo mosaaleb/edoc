@@ -19,12 +19,18 @@ const Appointments = ({
 }) => {
   const history = useHistory();
   const [appointments, setAppointments] = useState([]);
+  const [isRefreshNeeded, setIsRefreshNeeded] = useState([]);
 
   const renderAppointments = appointments.map((appointment) => (
-    <Appointment key={appointment.id} appointment={appointment} />
+    <Appointment
+      key={appointment.id}
+      appointment={appointment}
+      setIsRefreshNeeded={setIsRefreshNeeded}
+    />
   ));
 
   useEffect(() => {
+    setIsRefreshNeeded(false);
     setIsLoading();
     Axios.get('https://tranquil-river-82740.herokuapp.com/appointments', {
       headers: {
@@ -38,10 +44,19 @@ const Appointments = ({
         removeCurrentUser();
         history.push('/signin');
         setNotificationMessage('Session expired! Please log in to continue');
-      }).then(() => {
+      })
+      .then(() => {
         resetIsLoading();
       });
-  }, [token, history, setIsLoading, resetIsLoading, setNotificationMessage, removeCurrentUser]);
+  }, [
+    token,
+    history,
+    setIsLoading,
+    resetIsLoading,
+    isRefreshNeeded,
+    removeCurrentUser,
+    setNotificationMessage
+  ]);
 
   return (
     <div className="p-4 font-montserrat">
