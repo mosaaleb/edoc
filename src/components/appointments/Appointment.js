@@ -1,13 +1,22 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import { cancelAppointment } from '../../actions/asyncActions';
 
-const Appointment = ({ appointment }) => {
+const Appointment = ({ appointment, cancelAppointment, setIsRefreshNeeded }) => {
   const { doctor, date } = appointment;
   const doctorName = `Dr. ${doctor.first_name} ${doctor.last_name}`;
+
+  const handleClick = () => {
+    cancelAppointment(appointment.id).then(() => {
+      setIsRefreshNeeded(true);
+    });
+  };
+
   return (
-    <div className="shadow-md mb-6 flex rounded text-gray-900">
-      <div className="w-3/12 bg-gradient text-center py-5 text-gray-100 rounded-l flex flex-col justify-around">
+    <div className="shadow-md my-5 flex text-gray-900">
+      <div className="w-3/12 bg-gradient text-center py-5 text-gray-100 flex flex-col justify-around">
         <h4 className="font-bold uppercase">{moment(date).format('MMM')}</h4>
         <h2 className="font-bold text-4xl">{moment(date).format('D')}</h2>
         <p className="font-bold text-sm">{moment(date).format('LT')}</p>
@@ -22,6 +31,7 @@ const Appointment = ({ appointment }) => {
         </div>
         <button
           type="button"
+          onClick={handleClick}
           className="text-gray-100 bg py-1 rounded-full w-3/12 bg-gradient focus:outline-none"
         >
           Cancel
@@ -36,7 +46,9 @@ Appointment.propTypes = {
     id: PropTypes.number,
     date: PropTypes.string,
     doctor: PropTypes.object
-  }).isRequired
+  }).isRequired,
+  cancelAppointment: PropTypes.func.isRequired,
+  setIsRefreshNeeded: PropTypes.func.isRequired
 };
 
-export default Appointment;
+export default connect(null, { cancelAppointment })(Appointment);

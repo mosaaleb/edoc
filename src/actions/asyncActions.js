@@ -1,5 +1,3 @@
-/* eslint-disable import/prefer-default-export */
-
 import Axios from 'axios';
 import { setToken } from './tokenActions';
 import configureStore from '../configureStore';
@@ -62,5 +60,18 @@ export const createAppointment = (doctor_id, date) => {
   }).catch((error) => {
     dispatch(setValidationErrors(error.response.data.message));
     return 'failure';
+  });
+};
+
+export const cancelAppointment = (id) => {
+  const store = configureStore();
+  const state = store.getState();
+  const { token } = state;
+  return (dispatch) => Axios.delete(`https://tranquil-river-82740.herokuapp.com/appointments/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }).then((res) => {
+    dispatch(setNotificationMessage(res.data.message));
   });
 };

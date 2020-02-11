@@ -32,7 +32,7 @@ const Doctor = ({ doctor, resetValidationErrors }) => {
   }, [isDatePickerShowing, resetValidationErrors]);
 
   return (
-    <div className="shadow-md p-4 mb-6">
+    <div className="shadow-md p-4 my-5">
       {isDatePickerShowing ? (
         <AppointmentDatePicker
           doctor={doctor}
