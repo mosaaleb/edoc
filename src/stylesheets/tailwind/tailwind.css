@@ -1,6 +1,6 @@
+/* purgecss start ignore */
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&display=swap');
@@ -10,10 +10,6 @@
     background-image: linear-gradient(to right, theme('colors.teal.500'), theme('colors.teal.700'));
   }
 }
-
-/***
-** Datetime picker component styles
-***/
 
 .rdtPicker table {
   @apply w-full table-auto;
@@ -55,4 +51,6 @@ input.form-control {
 .rdtPicker td.rdtActive {
   @apply bg-teal-400 rounded-full font-bold;
 }
+/* purgecss end ignore */
 
+@tailwind utilities;

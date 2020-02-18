@@ -1,48 +1,20 @@
-import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import ReactRouterPropTypes from 'react-router-prop-types';
-import { signInWithEmailAndPassword } from '../../actions/asyncActions';
+import React from 'react';
+import SignInForm from './SignInForm';
 
-const SignIn = ({ signInWithEmailAndPassword, history }) => {
-  const [inputFields, setInputFields] = useState({
-    email: '',
-    password: ''
-  });
+const SignIn = () => (
+  <div className="flex items-center w-full justify-center h-screen bg-teal-100 font-montserrat">
+    <div className="w-4/5 max-w-md">
+      <div className="text-center my-8 text-gray-900">
+        <h2 className="text-teal-500 font-bold text-3xl leading-loose">
+          <span className="text-gray-700">E</span>
+          Doc
+        </h2>
+        <h3 className="font-bold uppercase">Welcome Back</h3>
+        <p className="text-sm">Please sign in to continue</p>
+      </div>
+      <SignInForm />
+    </div>
+  </div>
+);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    signInWithEmailAndPassword(inputFields, history);
-  };
-
-  return (
-    <form className="flex flex-col" onSubmit={handleSubmit} noValidate>
-      <input
-        type="email"
-        placeholder="Email"
-        value={inputFields.email}
-        // prettier-ignore
-        onChange={(e) => setInputFields({ ...inputFields, email: e.target.value })}
-        className="border-2"
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={inputFields.password}
-        autoComplete="Current Password"
-        // prettier-ignore
-        onChange={(e) => setInputFields({ ...inputFields, password: e.target.value })}
-        className="border-2 border"
-      />
-      <button type="submit">Sign In</button>
-    </form>
-  );
-};
-
-SignIn.propTypes = {
-  history: ReactRouterPropTypes.history.isRequired,
-  signInWithEmailAndPassword: PropTypes.func.isRequired
-};
-
-export default connect(null, { signInWithEmailAndPassword })(withRouter(SignIn));
+export default SignIn;

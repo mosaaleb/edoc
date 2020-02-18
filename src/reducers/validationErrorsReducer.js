@@ -10,6 +10,8 @@ const validationErrors = (state = initState, action) => {
         isValid: false,
         errors: action.errors
       };
+    case 'RESET_VALIDATION_ERRORS':
+      return { isValid: true, errors: {} };
     default:
       return state;
   }

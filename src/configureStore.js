@@ -8,9 +8,9 @@ const configureStore = () => {
     appReducer,
     Storage.loadState(),
     compose(
-      applyMiddleware(thunk),
+      applyMiddleware(thunk)
       // eslint-disable-next-line no-underscore-dangle
-      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+      // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     )
   );
 
@@ -21,7 +21,7 @@ const configureStore = () => {
     });
   });
 
-  window.store = store.getState();
+  window.store = store;
   return store;
 };
 
