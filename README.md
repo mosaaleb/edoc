@@ -43,11 +43,11 @@ yarn install
 
 ## Author
 
-👤 **Author1**
+👤 **Muhammad Ebeid**
 
-- Github: [@githubhandle](https://github.com/mosaaleb)
-- Twitter: [@twitterhandle](https://twitter.com/muhammadebeid)
-- Linkedin: [linkedin](https://www.linkedin.com/in/muhammadebeid/)
+- Github: [@mosaaleb](https://github.com/mosaaleb)
+- Twitter: [@muhammadebeid](https://twitter.com/muhammadebeid)
+- Linkedin: [muhammadebeid](https://www.linkedin.com/in/muhammadebeid/)
 
 ## 🤝 Contributing
 
@@ -59,4 +59,4 @@ Feel free to check the [issues page](issues/).
 - [UI](https://www.behance.net/gallery/77208667/MediCo-Medical-mobile-app-UIUX-design?tracking_source=search%7Cmobile%20app) Inspiration
 
 ## 📝 License
-This project is [MIT](lic.url) licensed.
+This project is [MIT](https://opensource.org/licenses/MIT) licensed.
