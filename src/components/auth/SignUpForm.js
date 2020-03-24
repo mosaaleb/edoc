@@ -19,9 +19,9 @@ const SignUpForm = ({
   const { isValid, errors } = validationErrors;
   const [inputFields, setInputFields] = useState({
     email: '',
-    first_name: '',
-    last_name: '',
     password: '',
+    last_name: '',
+    first_name: '',
     password_confirmation: ''
   });
 
@@ -120,11 +120,11 @@ const SignUpForm = ({
 };
 
 SignUpForm.propTypes = {
-  history: ReactRouterPropTypes.history.isRequired,
   loading: PropTypes.bool.isRequired,
   setIsLoading: PropTypes.func.isRequired,
   resetIsLoading: PropTypes.func.isRequired,
   signUpWithUserData: PropTypes.func.isRequired,
+  history: ReactRouterPropTypes.history.isRequired,
   validationErrors: PropTypes.shape({
     isValid: PropTypes.bool.isRequired,
     errors: PropTypes.objectOf(PropTypes.arrayOf(PropTypes.string))
@@ -138,7 +138,7 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {
-  signUpWithUserData,
   setIsLoading,
-  resetIsLoading
+  resetIsLoading,
+  signUpWithUserData,
 })(withRouter(SignUpForm));

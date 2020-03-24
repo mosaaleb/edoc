@@ -12,8 +12,8 @@ const Illustration = ({ image, heading, title }) => (
 
 Illustration.propTypes = {
   image: PropTypes.string.isRequired,
-  heading: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  heading: PropTypes.string.isRequired
 };
 
 export default Illustration;

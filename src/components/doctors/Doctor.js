@@ -9,15 +9,15 @@ import { resetValidationErrors } from '../../actions/validationsErrorsActions';
 const Doctor = ({ doctor, resetValidationErrors }) => {
   const {
     fees,
-    first_name,
-    last_name,
+    lastName,
+    firstName,
     speciality,
-    years_of_experience
+    yearsOfExperience
   } = doctor;
 
   const [isDatePickerShowing, setIsDatePickerShowing] = useState(false);
 
-  const fullName = `Dr. ${first_name} ${last_name}`;
+  const fullName = `Dr. ${firstName} ${lastName}`;
 
   const likeSvg = (
     <svg width="16" height="16" className="fill-current inline-block text-gray-900">
@@ -55,7 +55,7 @@ const Doctor = ({ doctor, resetValidationErrors }) => {
           <p className="text-gray-600 text-sm">MD- General Medicine</p>
           <div className="flex justify-between font-bold text-sm mt-3">
             <p>{`$${fees}`}</p>
-            <p>{`${years_of_experience} Years of exp.`}</p>
+            <p>{`${yearsOfExperience} Years of exp.`}</p>
             <p>
               <button type="button" className="focus:outline-none">
                 {likeSvg}
@@ -91,12 +91,12 @@ const Doctor = ({ doctor, resetValidationErrors }) => {
 
 Doctor.propTypes = {
   doctor: PropTypes.shape({
-    fees: PropTypes.number,
     id: PropTypes.number,
-    first_name: PropTypes.string,
-    last_name: PropTypes.string,
+    fees: PropTypes.number,
+    lastName: PropTypes.string,
+    firstName: PropTypes.string,
     speciality: PropTypes.string,
-    years_of_experience: PropTypes.number
+    yearsOfExperience: PropTypes.number
   }).isRequired,
   resetValidationErrors: PropTypes.func.isRequired
 };

@@ -57,10 +57,10 @@ const SignInForm = ({
 };
 
 SignInForm.propTypes = {
-  history: ReactRouterPropTypes.history.isRequired,
   loading: PropTypes.bool.isRequired,
   setIsLoading: PropTypes.func.isRequired,
   resetIsLoading: PropTypes.func.isRequired,
+  history: ReactRouterPropTypes.history.isRequired,
   signInWithEmailAndPassword: PropTypes.func.isRequired
 };
 

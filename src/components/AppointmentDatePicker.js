@@ -59,15 +59,15 @@ const AppointmentDatePicker = ({
           </button>
           <div className="w-full text-center mb-10">
             <h3 className="font-bold text-gray-900">
-              {`Dr. ${doctor.first_name} ${doctor.last_name}`}
+              {`Dr. ${doctor.firstName} ${doctor.lastName}`}
             </h3>
             <h5 className="text-gray-700 text-sm font-bold">
               {doctor.speciality}
             </h5>
             <p className="text-gray-600 text-sm">MD- General Medicine</p>
             <div className="flex justify-between font-bold text-sm mt-3">
-              <p>$200</p>
-              <p>14 Years of exp.</p>
+              <p>{`$${doctor.fees}`}</p>
+              <p>{`${doctor.yearsOfExperience} Years of exp.`}</p>
               <p>
                 <button type="button" className="focus:outline-none">
                   {likeSvg}
@@ -94,9 +94,11 @@ AppointmentDatePicker.propTypes = {
   setIsDatePickerShowing: PropTypes.func.isRequired,
   doctor: PropTypes.shape({
     id: PropTypes.number,
-    first_name: PropTypes.string,
-    last_name: PropTypes.string,
-    speciality: PropTypes.string
+    fees: PropTypes.number,
+    lastName: PropTypes.string,
+    firstName: PropTypes.string,
+    speciality: PropTypes.string,
+    yearsOfExperience: PropTypes.number
   }).isRequired,
   validationErrors: PropTypes.shape({
     isValid: PropTypes.bool.isRequired,
@@ -105,10 +107,10 @@ AppointmentDatePicker.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  id: state.auth.currentUser.id,
   token: state.token,
-  validationErrors: state.validationErrors,
-  notifications: state.notifications
+  id: state.auth.currentUser.id,
+  notifications: state.notifications,
+  validationErrors: state.validationErrors
 });
 
 export default connect(mapStateToProps, { createAppointment })(

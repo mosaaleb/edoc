@@ -4,16 +4,16 @@ import PropTypes from 'prop-types';
 const Filter = ({ setParams, setIsFilterHidden }) => {
   const [input, setInput] = useState({ name: null, speciality: null });
   const doctorSpecialities = [
-    'General Doctor',
-    'Skin & Hair',
-    'Child Care',
-    "Women's Health",
-    'Dentist',
     'ENT',
-    'Homeopathy',
-    'Ayurveda',
+    'Dentist',
     'Cardiac',
-    'Psychiatry'
+    'Ayurveda',
+    'Child Care',
+    'Psychiatry',
+    'Homeopathy',
+    'Skin & Hair',
+    "Women's Health",
+    'General Doctor'
   ];
 
   const handleFilter = () => {
