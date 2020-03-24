@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import AppointmentDatePicker from '../AppointmentDatePicker';
-import avatar from '../../assets/avatar.jpg';
+// import avatar from '../../assets/avatar.jpg';
 import { resetValidationErrors } from '../../actions/validationsErrorsActions';
 
 const Doctor = ({ doctor, resetValidationErrors }) => {
@@ -40,10 +40,10 @@ const Doctor = ({ doctor, resetValidationErrors }) => {
         />
       ) : null}
       <div className="flex mb-3 flex-grow">
-        <div className="w-16 h-16 mr-3 rounded-full overflow-hidden">
+        <div className="w-20 h-16 mr-3 rounded-full overflow-hidden shadow">
           <img
-            src={avatar}
             alt="avatar"
+            src={doctor.avatarUrl}
             className="h-full w-full object-cover"
           />
         </div>
@@ -95,6 +95,7 @@ Doctor.propTypes = {
     fees: PropTypes.number,
     lastName: PropTypes.string,
     firstName: PropTypes.string,
+    avatarUrl: PropTypes.string,
     speciality: PropTypes.string,
     yearsOfExperience: PropTypes.number
   }).isRequired,
