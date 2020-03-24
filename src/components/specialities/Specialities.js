@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import Axios from 'axios';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import axiosInstance from '../../configureAxios';
 import Speciality from './Speciality';
 import { removeCurrentUser } from '../../actions/authActions';
 import { setNotificationMessage } from '../../actions/notificationActions';
@@ -10,7 +10,6 @@ import { setIsLoading, resetIsLoading } from '../../actions/loadingActions';
 import Loading from '../Loading';
 
 const Specialities = ({
-  token,
   loading,
   setIsLoading,
   resetIsLoading,
@@ -26,11 +25,7 @@ const Specialities = ({
 
   useEffect(() => {
     setIsLoading();
-    const headers = { headers: { Authorization: `Bearer ${token}` } };
-    Axios.get(
-      'https://tranquil-river-82740.herokuapp.com/specialities',
-      headers
-    )
+    axiosInstance.get('/specialities')
       .then((res) => {
         setSpecialities(res.data);
       })
@@ -41,7 +36,7 @@ const Specialities = ({
       }).then(() => {
         resetIsLoading();
       });
-  }, [token, history, setIsLoading, resetIsLoading, setNotificationMessage, removeCurrentUser]);
+  }, [history, setIsLoading, resetIsLoading, setNotificationMessage, removeCurrentUser]);
 
   return (
     <div className="p-4 font-montserrat">
@@ -56,7 +51,7 @@ const Specialities = ({
       <div className="flex flex-col items-center py-10">
         <h3 className="font-bold text-4xl">Search Doctors</h3>
         <p className="text-lg">
-          Search doctors by health concerns listed below.
+          Search doctors by your health concerns listed below.
         </p>
       </div>
       <div className="flex flex-wrap justify-center">
@@ -67,7 +62,6 @@ const Specialities = ({
 };
 
 Specialities.propTypes = {
-  token: PropTypes.string.isRequired,
   loading: PropTypes.bool.isRequired,
   setIsLoading: PropTypes.func.isRequired,
   resetIsLoading: PropTypes.func.isRequired,
@@ -76,7 +70,6 @@ Specialities.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  token: state.token,
   loading: state.loading
 });
 

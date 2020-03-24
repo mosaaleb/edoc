@@ -1,12 +1,11 @@
-import Axios from 'axios';
+import axiosInstance from '../configureAxios';
 import { setToken } from './tokenActions';
-import configureStore from '../configureStore';
 import { setCurrentUser } from './authActions';
 import { setValidationErrors, resetValidationErrors } from './validationsErrorsActions';
 import { setNotificationMessage } from './notificationActions';
 
 export const signUpWithUserData = (userData, history) => (
-  (dispatch) => Axios.post('https://tranquil-river-82740.herokuapp.com/patients', {
+  (dispatch) => axiosInstance.post('/patients', {
     patient: { account_attributes: { ...userData } }
   }).then((res) => {
     dispatch(setToken(res.data.auth_token));
@@ -19,7 +18,7 @@ export const signUpWithUserData = (userData, history) => (
 );
 
 export const signUpWithDoctorData = (doctorData, history) => (
-  (dispatch) => Axios.post('https://tranquil-river-82740.herokuapp.com/accounts', {
+  (dispatch) => axiosInstance.post('/accounts', {
     account: { ...doctorData, type: 'Doctor' }
   }).then((res) => {
     dispatch(setToken(res.data.auth_token));
@@ -31,7 +30,7 @@ export const signUpWithDoctorData = (doctorData, history) => (
 );
 
 export const signInWithEmailAndPassword = (userData, history) => (
-  (dispatch) => Axios.post('https://tranquil-river-82740.herokuapp.com/authenticate', {
+  (dispatch) => axiosInstance.post('/authenticate', {
     authentication: { ...userData }
   }).then((res) => {
     dispatch(setToken(res.data.auth_token));
@@ -43,16 +42,9 @@ export const signInWithEmailAndPassword = (userData, history) => (
   })
 );
 
-export const createAppointment = (doctor_id, date) => {
-  const store = configureStore();
-  const state = store.getState();
-  const { token } = state;
-  return (dispatch) => Axios.post('https://tranquil-river-82740.herokuapp.com/appointments', {
+export const createAppointment = (doctor_id, date) => (
+  (dispatch) => axiosInstance.post('/appointments', {
     appointment: { doctor_id, date }
-  }, {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
   }).then((res) => {
     dispatch(setNotificationMessage(res.data.message));
     dispatch(resetValidationErrors());
@@ -60,18 +52,12 @@ export const createAppointment = (doctor_id, date) => {
   }).catch((error) => {
     dispatch(setValidationErrors(error.response.data.message));
     return 'failure';
-  });
-};
+  })
+);
 
-export const cancelAppointment = (id) => {
-  const store = configureStore();
-  const state = store.getState();
-  const { token } = state;
-  return (dispatch) => Axios.delete(`https://tranquil-river-82740.herokuapp.com/appointments/${id}`, {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  }).then((res) => {
-    dispatch(setNotificationMessage(res.data.message));
-  });
-};
+export const cancelAppointment = (id) => (
+  (dispatch) => axiosInstance.delete(`/appointments/${id}`)
+    .then((res) => {
+      dispatch(setNotificationMessage(res.data.message));
+    })
+);

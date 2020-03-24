@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import Axios from 'axios';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import axiosInstance from '../../configureAxios';
 import Appointment from './Appointment';
 import { removeCurrentUser } from '../../actions/authActions';
 import { setNotificationMessage } from '../../actions/notificationActions';
@@ -10,7 +10,6 @@ import { resetIsLoading, setIsLoading } from '../../actions/loadingActions';
 import Loading from '../Loading';
 
 const Appointments = ({
-  token,
   loading,
   setIsLoading,
   resetIsLoading,
@@ -32,11 +31,7 @@ const Appointments = ({
   useEffect(() => {
     setIsRefreshNeeded(false);
     setIsLoading();
-    Axios.get('https://tranquil-river-82740.herokuapp.com/appointments', {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
+    axiosInstance.get('/appointments')
       .then((res) => {
         setAppointments(res.data);
       })
@@ -49,7 +44,6 @@ const Appointments = ({
         resetIsLoading();
       });
   }, [
-    token,
     history,
     setIsLoading,
     resetIsLoading,
@@ -69,7 +63,6 @@ const Appointments = ({
 };
 
 Appointments.propTypes = {
-  token: PropTypes.string.isRequired,
   loading: PropTypes.bool.isRequired,
   setIsLoading: PropTypes.func.isRequired,
   resetIsLoading: PropTypes.func.isRequired,
@@ -78,7 +71,6 @@ Appointments.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  token: state.token,
   loading: state.loading
 });
 

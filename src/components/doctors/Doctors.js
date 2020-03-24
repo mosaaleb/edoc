@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import axiosInstance from '../../configureAxios';
 import Doctor from './Doctor';
 import Filter from './Filter';
 import { removeCurrentUser } from '../../actions/authActions';
@@ -11,7 +11,6 @@ import { resetIsLoading, setIsLoading } from '../../actions/loadingActions';
 import Loading from '../Loading';
 
 const Doctors = ({
-  token,
   loading,
   setIsLoading,
   resetIsLoading,
@@ -35,11 +34,7 @@ const Doctors = ({
 
   useEffect(() => {
     setIsLoading();
-    const headers = { Authorization: `Bearer ${token}` };
-    Axios.get('https://tranquil-river-82740.herokuapp.com/doctors', {
-      headers,
-      params
-    })
+    axiosInstance.get('/doctors', { params })
       .then((res) => {
         setDoctors(res.data);
       })
@@ -52,7 +47,6 @@ const Doctors = ({
         resetIsLoading();
       });
   }, [
-    token,
     params,
     history,
     setIsLoading,
@@ -87,9 +81,9 @@ const Doctors = ({
       </button>
       {isFilterHidden ? null : (
         <Filter
-          setIsFilterHidden={setIsFilterHidden}
-          setParams={setParams}
           params={params}
+          setParams={setParams}
+          setIsFilterHidden={setIsFilterHidden}
         />
       )}
     </div>
@@ -97,7 +91,6 @@ const Doctors = ({
 };
 
 Doctors.propTypes = {
-  token: PropTypes.string.isRequired,
   loading: PropTypes.bool.isRequired,
   setIsLoading: PropTypes.func.isRequired,
   resetIsLoading: PropTypes.func.isRequired,
@@ -106,7 +99,6 @@ Doctors.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  token: state.token,
   loading: state.loading
 });
 
