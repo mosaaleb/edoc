@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import AppointmentDatePicker from '../AppointmentDatePicker';
-// import avatar from '../../assets/avatar.jpg';
 import { resetValidationErrors } from '../../actions/validationsErrorsActions';
 
 const Doctor = ({ doctor, resetValidationErrors }) => {
@@ -66,7 +65,10 @@ const Doctor = ({ doctor, resetValidationErrors }) => {
         </div>
       </div>
       <h2 className="text-center uppercase text-sm font-bold mb-4 text-teal-500">
-        <Link to="/" className="text-center">
+        <Link
+          className="text-center"
+          to={`doctors/${doctor.id}`}
+        >
           View Profile
         </Link>
       </h2>
