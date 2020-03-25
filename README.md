@@ -6,19 +6,20 @@
 This is part of two part project in [Microverse](https://www.microverse.org/) curriculum
 The project handle searching physicians by their speciality and handles creating appointments with patients.
 
-It uses back-end api built with rails
-rails API [edoc-api](https://github.com/mosaaleb/edoc-api/)
+It consumes back-end api built with rails
+
+You can check back-end [here](https://github.com/mosaaleb/edoc-api/)
 
 **Features**
+- Mobile app
 - Authentication with JWT
 - Filtering physicians by category
 - Creating appointments with physicians
-- Mobile app
 
 ## Built With
-- TailwindCSS
 - React
 - Redux
+- TailwindCSS
 - React router
 
 ## Live Demo
@@ -55,6 +56,12 @@ yarn install
 Contributions, issues and feature requests are welcome!
 
 Feel free to check the [issues page](issues/).
+
+## Coming Features
+- [ ] Doctor profile page listing all reviews left by patients.
+- [ ] Consuming doctor likes from back-end api.
+
+**Do you specific feature in mind?** Please [Submit](https://github.com/mosaaleb/edoc/labels/enhancement) it.
 
 ## Acknowledgments
 - [UI](https://www.behance.net/gallery/77208667/MediCo-Medical-mobile-app-UIUX-design?tracking_source=search%7Cmobile%20app) Inspiration
