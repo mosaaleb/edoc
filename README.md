@@ -48,6 +48,7 @@ yarn install
 - Github: [@mosaaleb](https://github.com/mosaaleb)
 - Twitter: [@muhammadebeid](https://twitter.com/muhammadebeid)
 - Linkedin: [muhammadebeid](https://www.linkedin.com/in/muhammadebeid/)
+- [muhammed.ebeid@gmail.com](muhammed.ebeid@gmail.com)
 
 ## 🤝 Contributing
 
