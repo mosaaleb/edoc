@@ -2,10 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import axiosInstance from '../../configureAxios';
 
-const DoctorLikeButton = ({ isLiked, likesCount }) => {
+const DoctorLikeButton = ({ isLiked, likesCount, id }) => {
+  const handleClick = () => {
+    if (isLiked === false) {
+      axiosInstance.post(`/doctors/${id}/like`)
+        .then(() => {
+          alert('liked!');
+        });
+    } else {
+      axiosInstance.delete(`/doctors/${id}/dislike`)
+        .then(() => {
+          alert('disliked!');
+        });
+    }
+  };
+
   return (
     <p>
-      <button type="button" className="focus:outline-none">
+      <button
+        type="button"
+        onClick={handleClick}
+        className="focus:outline-none"
+      >
         <svg
           width="17"
           height="17"
@@ -30,6 +48,7 @@ const DoctorLikeButton = ({ isLiked, likesCount }) => {
 };
 
 DoctorLikeButton.propTypes = {
+  id: PropTypes.number.isRequired,
   isLiked: PropTypes.bool.isRequired,
   likesCount: PropTypes.number.isRequired
 };
