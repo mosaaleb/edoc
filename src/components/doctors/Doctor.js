@@ -8,9 +8,11 @@ import { resetValidationErrors } from '../../actions/validationsErrorsActions';
 const Doctor = ({ doctor, resetValidationErrors }) => {
   const {
     fees,
+    liked,
     lastName,
     firstName,
     speciality,
+    likesCount,
     yearsOfExperience
   } = doctor;
 
@@ -19,10 +21,13 @@ const Doctor = ({ doctor, resetValidationErrors }) => {
   const fullName = `Dr. ${firstName} ${lastName}`;
 
   const likeSvg = (
-    <svg width="16" height="16" className="fill-current inline-block text-gray-900">
-      <path
-        d="M11.188 1c-1.05 0-1.741.122-2.53.49a4.668 4.668 0 00-.666.379c-.2-.134-.41-.253-.63-.357C6.556 1.132 5.831 1 4.817 1 2.038 1 0 3.214 0 6.08c0 2.148 1.237 4.188 3.512 6.137 1.178 1.01 2.679 2.006 3.761 2.54l.727.358.727-.358c1.082-.534 2.583-1.53 3.761-2.54C14.764 10.268 16 8.227 16 6.08c0-2.838-2.056-5.07-4.812-5.08zM14 6.08c0 1.464-.939 3.013-2.813 4.618-.995.852-2.265 1.706-3.187 2.185-.922-.479-2.192-1.333-3.187-2.185C2.939 9.093 2 7.544 2 6.08 2 4.283 3.182 3 4.818 3c.74 0 1.18.08 1.69.321.295.139.554.32.777.547l.718.73.713-.736c.228-.236.49-.421.786-.56.494-.23.905-.302 1.682-.302C12.798 3.006 14 4.31 14 6.08z"
-      />
+    <svg
+      width="17"
+      height="17"
+      viewBox="0 0 20 20"
+      className={`fill-current inline-block ${liked ? 'text-red-700' : 'text-white'}`}
+    >
+      <path d="M10 3.22l-.61-.6a5.5 5.5 0 0 0-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 0 0-7.78-7.77l-.61.61z" stroke="black" strokeWidth="2" />
     </svg>
   );
 
@@ -59,7 +64,10 @@ const Doctor = ({ doctor, resetValidationErrors }) => {
               <button type="button" className="focus:outline-none">
                 {likeSvg}
               </button>
-              <span> 126</span>
+              <span>
+                {' '}
+                {likesCount}
+              </span>
             </p>
           </div>
         </div>
@@ -94,11 +102,13 @@ const Doctor = ({ doctor, resetValidationErrors }) => {
 Doctor.propTypes = {
   doctor: PropTypes.shape({
     id: PropTypes.number,
+    liked: PropTypes.bool,
     fees: PropTypes.number,
     lastName: PropTypes.string,
     firstName: PropTypes.string,
     avatarUrl: PropTypes.string,
     speciality: PropTypes.string,
+    likesCount: PropTypes.number,
     yearsOfExperience: PropTypes.number
   }).isRequired,
   resetValidationErrors: PropTypes.func.isRequired
