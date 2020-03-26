@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SignUpForm from './SignUpForm';
 
 const SignUp = () => (
@@ -12,6 +13,11 @@ const SignUp = () => (
         <h3 className="font-bold uppercase">Sign up to continue</h3>
       </div>
       <SignUpForm />
+      <div className="text-center pt-3">
+        Already a user?
+        {' '}
+        <Link to="signin" className="text-teal-500 underline font-semibold">Sign In</Link>
+      </div>
     </div>
   </div>
 );
