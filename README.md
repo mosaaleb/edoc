@@ -61,7 +61,7 @@ Feel free to check the [issues page](issues/).
 - [ ] Doctor profile page listing all reviews left by patients.
 - [ ] Consuming doctor likes from back-end api.
 
-**Do you specific feature in mind?** Please [Submit](https://github.com/mosaaleb/edoc/labels/enhancement) it.
+**Do you have specific feature in mind?** Please [Submit](https://github.com/mosaaleb/edoc/labels/enhancement) it.
 
 ## Acknowledgments
 - [UI](https://www.behance.net/gallery/77208667/MediCo-Medical-mobile-app-UIUX-design?tracking_source=search%7Cmobile%20app) Inspiration
