@@ -21,20 +21,6 @@ const Doctor = ({ doctor, resetValidationErrors }) => {
 
   const fullName = `Dr. ${firstName} ${lastName}`;
 
-<<<<<<< HEAD
-=======
-  const likeSvg = (
-    <svg
-      width="17"
-      height="17"
-      viewBox="0 0 20 20"
-      className={`fill-current inline-block ${liked ? 'text-red-700' : 'text-white'}`}
-    >
-      <path d="M10 3.22l-.61-.6a5.5 5.5 0 0 0-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 0 0-7.78-7.77l-.61.61z" stroke="black" strokeWidth="2" />
-    </svg>
-  );
-
->>>>>>> e0cfc1f84be6500108bc97ba1161e4fd8960f40d
   useEffect(() => {
     resetValidationErrors();
   }, [isDatePickerShowing, resetValidationErrors]);
@@ -64,19 +50,7 @@ const Doctor = ({ doctor, resetValidationErrors }) => {
           <div className="flex justify-between font-bold text-sm mt-3">
             <p>{`$${fees}`}</p>
             <p>{`${yearsOfExperience} Years of exp.`}</p>
-<<<<<<< HEAD
             <DoctorLikeButton isLiked={liked} likesCount={likesCount} />
-=======
-            <p>
-              <button type="button" className="focus:outline-none">
-                {likeSvg}
-              </button>
-              <span>
-                {' '}
-                {likesCount}
-              </span>
-            </p>
->>>>>>> e0cfc1f84be6500108bc97ba1161e4fd8960f40d
           </div>
         </div>
       </div>
