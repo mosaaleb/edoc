@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import AppointmentDatePicker from '../AppointmentDatePicker';
 import { resetValidationErrors } from '../../actions/validationsErrorsActions';
+import DoctorLikeButton from './DoctorLikeButton';
 
 const Doctor = ({ doctor, resetValidationErrors }) => {
   const {
@@ -20,21 +21,6 @@ const Doctor = ({ doctor, resetValidationErrors }) => {
 
   const fullName = `Dr. ${firstName} ${lastName}`;
 
-  const likeSvg = (
-    <svg
-      width="17"
-      height="17"
-      viewBox="0 0 20 20"
-      className={`fill-current inline-block ${liked ? 'text-red-700' : 'text-white'}`}
-    >
-      <path
-        stroke="black"
-        strokeWidth="2"
-        d="M10 3.22l-.61-.6a5.5 5.5 0 0 0-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 0 0-7.78-7.77l-.61.61z"
-      />
-    </svg>
-  );
-
   useEffect(() => {
     resetValidationErrors();
   }, [isDatePickerShowing, resetValidationErrors]);
@@ -50,8 +36,8 @@ const Doctor = ({ doctor, resetValidationErrors }) => {
       <div className="flex mb-3 flex-grow">
         <div className="w-20 h-16 mr-3 rounded-full overflow-hidden shadow">
           <img
-            alt="avatar"
             src={doctor.avatarUrl}
+            alt={`${fullName}'s avatar`}
             className="h-full w-full object-cover"
           />
         </div>
@@ -64,15 +50,7 @@ const Doctor = ({ doctor, resetValidationErrors }) => {
           <div className="flex justify-between font-bold text-sm mt-3">
             <p>{`$${fees}`}</p>
             <p>{`${yearsOfExperience} Years of exp.`}</p>
-            <p>
-              <button type="button" className="focus:outline-none">
-                {likeSvg}
-              </button>
-              <span>
-                {' '}
-                {likesCount}
-              </span>
-            </p>
+            <DoctorLikeButton isLiked={liked} likesCount={likesCount} />
           </div>
         </div>
       </div>
