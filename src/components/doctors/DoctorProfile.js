@@ -4,6 +4,7 @@ import axiosInstance from '../../configureAxios';
 import { setIsLoading, resetIsLoading } from '../../actions/loadingActions';
 import { removeCurrentUser } from '../../actions/authActions';
 import { setNotificationMessage } from '../../actions/notificationActions';
+import DoctorProfileHeader from './DoctorProfileHeader';
 
 const DoctorProfile = () => {
   const params = useParams();
@@ -12,26 +13,27 @@ const DoctorProfile = () => {
 
   useEffect(() => {
     setIsLoading();
-    axiosInstance.get(`doctors/${params.id}`)
+    axiosInstance
+      .get(`doctors/${params.id}`)
       .then((res) => {
         setDoctor(res.data);
-      }).catch(() => {
+      })
+      .catch(() => {
         removeCurrentUser();
         history.push('/signin');
         setNotificationMessage('Session expired! Please log in to continue');
-      }).then(() => {
+      })
+      .then(() => {
         resetIsLoading();
       });
-  }, [
-    params,
-    history
-  ]);
+  }, [params, history]);
 
   return (
-    <div className="p-4 font-montserrat">
-      <pre>
-        {JSON.stringify(doctor, null, 2)}
-      </pre>
+    <div className="w-full -mt-10">
+      <DoctorProfileHeader doctor={doctor} />
+      <div className="p-4 font-montserrat">
+        sadf
+      </div>
     </div>
   );
 };

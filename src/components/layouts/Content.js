@@ -9,7 +9,7 @@ import DoctorProfile from '../doctors/DoctorProfile';
 import Appointments from '../appointments/Appointments';
 
 const Content = () => (
-  <div className="w-full max-w-3xl mx-auto px-1 pt-10">
+  <div className="w-full max-w-3xl mx-auto pt-10">
     <Switch>
       <Route exact path="/" component={LandingPage} />
       <PrivateRoute exact path="/doctors" component={Doctors} />

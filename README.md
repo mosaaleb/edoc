@@ -64,7 +64,7 @@ Feel free to check the [issues page](issues/).
 **Do you have specific feature in mind?** Please [Submit](https://github.com/mosaaleb/edoc/labels/enhancement) it.
 
 ## Acknowledgments
-- [UI](https://www.behance.net/gallery/77208667/MediCo-Medical-mobile-app-UIUX-design?tracking_source=search%7Cmobile%20app) Inspiration
+- [UI Inspiration](https://www.behance.net/gallery/77208667/MediCo-Medical-mobile-app-UIUX-design?tracking_source=search%7Cmobile%20app)
 
 ## 📝 License
 This project is [MIT](https://opensource.org/licenses/MIT) licensed.
