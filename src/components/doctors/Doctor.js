@@ -51,7 +51,7 @@ const Doctor = ({ doctor, resetValidationErrors }) => {
           <div className="flex justify-between font-bold text-sm mt-3">
             <p>{`$${fees}`}</p>
             <p>{`${yearsOfExperience} Years of exp.`}</p>
-            <DoctorLikeButton id={id} isLiked={liked} likesCount={likesCount} />
+            <DoctorLikeButton id={id} isLiked={liked} likesCount={likesCount} strokeColor="black" />
           </div>
         </div>
       </div>
