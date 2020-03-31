@@ -36,7 +36,7 @@ const DoctorProfileHeader = ({ doctor }) => (
       </div>
       <p className="my-2 text-lg">{doctor.speciality}</p>
     </div>
-    <div className="flex justify-between mt-3 w-3/5 mx-auto">
+    <div className="flex justify-between mt-3 w-3/5 mx-auto font-bold">
       <p>{`$${doctor.fees}`}</p>
       <p>{`${doctor.yearsOfExperience} Years of exp.`}</p>
       <DoctorLikeButton
