@@ -32,7 +32,7 @@ const DoctorProfile = () => {
     <div className="w-full -mt-10">
       <DoctorProfileHeader doctor={doctor} />
       <div className="p-4 font-montserrat">
-        sadf
+        {JSON.stringify(doctor.reviews, null, 2)}
       </div>
     </div>
   );
