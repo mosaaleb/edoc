@@ -4,6 +4,7 @@ import axiosInstance from '../../configureAxios';
 import { setIsLoading, resetIsLoading } from '../../actions/loadingActions';
 import { removeCurrentUser } from '../../actions/authActions';
 import { setNotificationMessage } from '../../actions/notificationActions';
+import DoctorReviews from './DoctorReviews';
 import DoctorProfileHeader from './DoctorProfileHeader';
 
 const DoctorProfile = () => {
@@ -31,8 +32,8 @@ const DoctorProfile = () => {
   return (
     <div className="w-full -mt-10">
       <DoctorProfileHeader doctor={doctor} />
-      <div className="p-4 font-montserrat">
-        {JSON.stringify(doctor.reviews, null, 2)}
+      <div className="px-4 py-10 font-montserrat">
+        <DoctorReviews reviews={doctor.reviews} />
       </div>
     </div>
   );
