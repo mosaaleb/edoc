@@ -6,7 +6,6 @@ import { cancelAppointment } from '../../actions/asyncActions';
 
 const Appointment = ({ appointment, cancelAppointment, setIsRefreshNeeded }) => {
   const { doctor, date } = appointment;
-  const doctorName = `Dr. ${doctor.firstName} ${doctor.lastName}`;
 
   const handleClick = () => {
     cancelAppointment(appointment.id).then(() => {
@@ -24,7 +23,7 @@ const Appointment = ({ appointment, cancelAppointment, setIsRefreshNeeded }) => 
 
       <div className="w-9/12 p-4 flex flex-col">
         <h5 className="text-gray-600">{doctor.speciality}</h5>
-        <h3 className="font-bold text-lg">{doctorName}</h3>
+        <h3 className="font-bold text-lg">{doctor.fullName}</h3>
         <div className="flex justify-between font-bold text-sm mt-3 mb-3">
           <p>{`$${doctor.fees}`}</p>
           <p>{`${doctor.yearsOfExperience} Years of exp.`}</p>
