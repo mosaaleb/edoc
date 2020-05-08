@@ -29,11 +29,7 @@ const Specialities = ({
       .then((res) => {
         setSpecialities(res.data);
       })
-      .catch(() => {
-        removeCurrentUser();
-        history.push('/signin');
-        setNotificationMessage('Session expired! Please log in to continue');
-      }).then(() => {
+      .then(() => {
         resetIsLoading();
       });
   }, [history, setIsLoading, resetIsLoading, setNotificationMessage, removeCurrentUser]);

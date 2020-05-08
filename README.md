@@ -37,6 +37,19 @@ cd edoc
 yarn install
 ```
 
+### Running the project
+- Clone the [back end](https://github.com/mosaaleb/edoc-api).
+- Follow the instruction on how to setup the back end.
+- Setup the front end part (check the Setup section).
+- Start the server on both back end and front end.
+```ruby
+# back end rails
+rails s
+# front end react
+npm start
+```
+- Start developing.
+
 **Server**
 `yarn react-scripts start`
 
@@ -61,7 +74,8 @@ Feel free to check the [issues page](issues/).
 - [ ] Doctor profile page listing all reviews left by patients.
 - [ ] Consuming doctor likes from back-end api.
 
-**Do you have specific feature in mind?** Please [Submit](https://github.com/mosaaleb/edoc/labels/enhancement) it.
+**Do you have specific feature in mind?** 
+Please [Submit](https://github.com/mosaaleb/edoc/labels/enhancement) it.
 
 ## Acknowledgments
 - [UI Inspiration](https://www.behance.net/gallery/77208667/MediCo-Medical-mobile-app-UIUX-design?tracking_source=search%7Cmobile%20app)
