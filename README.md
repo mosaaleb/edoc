@@ -53,7 +53,8 @@ npm start
 **Server**
 `yarn react-scripts start`
 
-### Deployment
+### Automated Tests:
+There are no automated tests yet added for this project.
 
 ## Author
 
