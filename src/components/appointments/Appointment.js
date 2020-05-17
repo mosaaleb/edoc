@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import moment from 'moment';
@@ -14,24 +15,28 @@ const Appointment = ({ appointment, cancelAppointment, setIsRefreshNeeded }) => 
   };
 
   return (
-    <div className="shadow-md my-5 flex text-gray-900">
-      <div className="w-3/12 bg-gradient text-center py-5 text-gray-100 flex flex-col justify-around">
+    <div className="flex my-5 text-gray-900 shadow-md">
+      <div className="flex flex-col justify-around w-3/12 py-5 text-center text-gray-100 bg-gradient">
         <h4 className="font-bold uppercase">{moment(date).format('MMM')}</h4>
-        <h2 className="font-bold text-4xl">{moment(date).format('D')}</h2>
-        <p className="font-bold text-sm">{moment(date).format('LT')}</p>
+        <h2 className="text-4xl font-bold">{moment(date).format('D')}</h2>
+        <p className="text-sm font-bold">{moment(date).format('LT')}</p>
       </div>
 
-      <div className="w-9/12 p-4 flex flex-col">
+      <div className="flex flex-col w-9/12 p-4">
         <h5 className="text-gray-600">{doctor.speciality}</h5>
-        <h3 className="font-bold text-lg">{doctor.fullName}</h3>
-        <div className="flex justify-between font-bold text-sm mt-3 mb-3">
+        <Link to={`doctors/${doctor.id}`}>
+          <h3 className="text-lg font-bold text-teal-500">
+            {doctor.fullName}
+          </h3>
+        </Link>
+        <div className="flex justify-between mt-3 mb-3 text-sm font-bold">
           <p>{`$${doctor.fees}`}</p>
           <p>{`${doctor.yearsOfExperience} Years of exp.`}</p>
         </div>
         <button
           type="button"
           onClick={handleClick}
-          className="text-gray-100 bg py-1 rounded-full w-3/12 bg-gradient focus:outline-none"
+          className="w-3/12 py-1 text-gray-100 rounded-full bg bg-gradient focus:outline-none"
         >
           Cancel
         </button>
