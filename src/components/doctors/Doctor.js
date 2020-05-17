@@ -37,7 +37,7 @@ const Doctor = ({ doctor, resetValidationErrors }) => {
         />
       ) : null}
       <div className="flex flex-grow mb-3">
-        <div className="w-20 h-20 mr-3 overflow-hidden rounded-full shadow">
+        <div className="w-20 h-16 mr-3 overflow-hidden rounded-full shadow">
           <LazyLoadImage
             alt={`${fullName}'s avatar`}
             src={doctor.avatarUrl}
