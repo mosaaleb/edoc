@@ -1,6 +1,8 @@
 import React from 'react';
 import moment from 'moment';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import PropTypes from 'prop-types';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const DoctorReview = ({ review }) => {
   const {
@@ -14,9 +16,10 @@ const DoctorReview = ({ review }) => {
       <div>
         <div className="flex items-center pb-1">
           <div className="w-12 h-12 overflow-hidden rounded-full">
-            <img
+            <LazyLoadImage
               src={reviewerAvatarUrl}
               alt={`${reviewerName}'s avatar`}
+              effect="blur"
               className="block object-cover w-full h-full"
             />
           </div>

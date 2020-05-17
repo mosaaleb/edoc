@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import AppointmentDatePicker from '../AppointmentDatePicker';
 import { resetValidationErrors } from '../../actions/validationsErrorsActions';
 import DoctorLikeButton from './DoctorLikeButton';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Doctor = ({ doctor, resetValidationErrors }) => {
   const {
@@ -35,10 +37,11 @@ const Doctor = ({ doctor, resetValidationErrors }) => {
         />
       ) : null}
       <div className="flex flex-grow mb-3">
-        <div className="w-20 h-16 mr-3 overflow-hidden rounded-full shadow">
-          <img
-            src={doctor.avatarUrl}
+        <div className="w-20 h-20 mr-3 overflow-hidden rounded-full shadow">
+          <LazyLoadImage
             alt={`${fullName}'s avatar`}
+            src={doctor.avatarUrl}
+            effect="blur"
             className="object-cover w-full h-full"
           />
         </div>
