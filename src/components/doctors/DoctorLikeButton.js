@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axiosInstance from '../../configureAxios';
 
@@ -8,16 +8,20 @@ const DoctorLikeButton = ({
   likesCount,
   strokeColor
 }) => {
+  const [liked, setLiked] = useState(isLiked);
+  const [count, setCount] = useState(Number.parseInt(likesCount, 10));
   const handleClick = () => {
-    if (isLiked === false) {
+    if (liked === false) {
       axiosInstance.post(`/doctors/${id}/like`)
         .then(() => {
-          alert('liked!');
+          setLiked(true);
+          setCount(count + 1);
         });
     } else {
       axiosInstance.delete(`/doctors/${id}/dislike`)
         .then(() => {
-          alert('disliked!');
+          setLiked(false);
+          setCount(count - 1);
         });
     }
   };
@@ -34,7 +38,7 @@ const DoctorLikeButton = ({
           height="17"
           viewBox="0 0 20 20"
           className={`fill-current inline-block ${
-            isLiked ? 'text-red-700' : 'text-transparent'
+            liked ? 'text-red-700' : 'text-transparent'
           }`}
         >
           <path
@@ -46,7 +50,7 @@ const DoctorLikeButton = ({
       </button>
       <span>
         {' '}
-        {likesCount}
+        {count.toString(10)}
       </span>
     </p>
   );
