@@ -10,15 +10,19 @@ import DoctorReviews from './DoctorReviews';
 import DoctorProfileHeader from './DoctorProfileHeader';
 import Loading from '../Loading';
 
-const DoctorProfile = ({ loading, setIsLoading, resetIsLoading }) => {
+const DoctorProfile = ({
+  loading,
+  setIsLoading,
+  resetIsLoading,
+  removeCurrentUser
+}) => {
   const params = useParams();
   const history = useHistory();
   const [doctor, setDoctor] = useState({});
 
   useEffect(() => {
     setIsLoading();
-    axiosInstance
-      .get(`doctors/${params.id}`)
+    axiosInstance.get(`doctors/${params.id}`)
       .then((res) => {
         setDoctor(res.data);
       })
@@ -30,20 +34,17 @@ const DoctorProfile = ({ loading, setIsLoading, resetIsLoading }) => {
       .then(() => {
         resetIsLoading();
       });
-  }, [params, history, setIsLoading, resetIsLoading]);
+  }, [params, history, setIsLoading, resetIsLoading, removeCurrentUser]);
 
+  if (loading) {
+    return <Loading />;
+  }
   return (
-    <div>
-      {loading ? (
-        <Loading />
-      ) : (
-        <div className="w-full -mt-10">
-          <DoctorProfileHeader doctor={doctor} />
-          <div className="px-4 py-10 font-montserrat">
-            <DoctorReviews reviews={doctor.reviews} />
-          </div>
-        </div>
-      )}
+    <div className="w-full -mt-10">
+      <DoctorProfileHeader doctor={doctor} />
+      <div className="px-4 py-10 font-montserrat">
+        <DoctorReviews reviews={doctor.reviews} />
+      </div>
     </div>
   );
 };
@@ -51,7 +52,8 @@ const DoctorProfile = ({ loading, setIsLoading, resetIsLoading }) => {
 DoctorProfile.propTypes = {
   loading: PropTypes.bool.isRequired,
   setIsLoading: PropTypes.func.isRequired,
-  resetIsLoading: PropTypes.func.isRequired
+  resetIsLoading: PropTypes.func.isRequired,
+  removeCurrentUser: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -59,6 +61,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  removeCurrentUser: () => {
+    dispatch(removeCurrentUser());
+  },
   setIsLoading: () => {
     dispatch(setIsLoading());
   },

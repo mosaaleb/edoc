@@ -42,7 +42,7 @@ const DoctorReview = ({ review }) => {
 };
 
 DoctorReview.propTypes = {
-  review: PropTypes.objectOf({
+  review: PropTypes.shape({
     id: PropTypes.number,
     review: PropTypes.string,
     createdAt: PropTypes.string,
