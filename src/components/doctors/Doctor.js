@@ -27,35 +27,40 @@ const Doctor = ({ doctor, resetValidationErrors }) => {
   }, [isDatePickerShowing, resetValidationErrors]);
 
   return (
-    <div className="shadow-md p-4 my-5">
+    <div className="p-4 my-5 shadow-md">
       {isDatePickerShowing ? (
         <AppointmentDatePicker
           doctor={doctor}
           setIsDatePickerShowing={setIsDatePickerShowing}
         />
       ) : null}
-      <div className="flex mb-3 flex-grow">
-        <div className="w-20 h-16 mr-3 rounded-full overflow-hidden shadow">
+      <div className="flex flex-grow mb-3">
+        <div className="w-20 h-16 mr-3 overflow-hidden rounded-full shadow">
           <img
             src={doctor.avatarUrl}
             alt={`${fullName}'s avatar`}
-            className="h-full w-full object-cover"
+            className="object-cover w-full h-full"
           />
         </div>
         <div className="w-full">
           <h3 className="font-bold text-gray-900">{fullName}</h3>
-          <h5 className="text-gray-700 text-sm font-bold">
+          <h5 className="text-sm font-bold text-gray-700">
             {speciality}
           </h5>
-          <p className="text-gray-600 text-sm">MD- General Medicine</p>
-          <div className="flex justify-between font-bold text-sm mt-3">
+          <p className="text-sm text-gray-600">MD- General Medicine</p>
+          <div className="flex justify-between mt-3 text-sm font-bold">
             <p>{`$${fees}`}</p>
             <p>{`${yearsOfExperience} Years of exp.`}</p>
-            <DoctorLikeButton id={id} isLiked={liked} likesCount={likesCount} strokeColor="black" />
+            <DoctorLikeButton
+              id={id}
+              isLiked={liked}
+              likesCount={likesCount}
+              strokeColor="black"
+            />
           </div>
         </div>
       </div>
-      <h2 className="text-center uppercase text-sm font-bold mb-4 text-teal-500">
+      <h2 className="mb-4 text-sm font-bold text-center text-teal-500 uppercase">
         <Link
           className="text-center"
           to={`doctors/${doctor.id}`}
@@ -66,14 +71,14 @@ const Doctor = ({ doctor, resetValidationErrors }) => {
       <div className="flex justify-between">
         <button
           type="button"
-          className="font-bold text-teal-500 bg-white border border-teal-500 py-2 rounded-full w-6/13 focus:outline-none"
+          className="py-2 font-bold text-teal-500 bg-white border border-teal-500 rounded-full w-6/13 focus:outline-none"
         >
           Call
         </button>
         <button
           type="button"
           onClick={() => setIsDatePickerShowing(true)}
-          className="font-bold text-gray-100 bg py-2 rounded-full w-6/13 bg-gradient focus:outline-none"
+          className="py-2 font-bold text-gray-100 rounded-full bg w-6/13 bg-gradient focus:outline-none"
         >
           Book
         </button>

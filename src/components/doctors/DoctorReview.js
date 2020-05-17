@@ -10,27 +10,31 @@ const DoctorReview = ({ review }) => {
     reviewerAvatarUrl
   } = review;
   return (
-    <div className="shadow-md p-4 my-10">
+    <div className="p-4 my-10 shadow-md">
       <div>
         <div className="flex items-center pb-1">
-          <div className="w-12 h-12  rounded-full overflow-hidden">
+          <div className="w-12 h-12 overflow-hidden rounded-full">
             <img
               src={reviewerAvatarUrl}
               alt={`${reviewerName}'s avatar`}
-              className="h-full w-full object-cover block"
+              className="block object-cover w-full h-full"
             />
           </div>
           <div className="pl-2">
             <div className="text-lg">
-              <span className="text-teal-500 font-bold">{reviewerName}</span>
+              <span className="font-bold text-teal-500">
+                {reviewerName}
+              </span>
               {' '}
               Said:
             </div>
-            <div className="text-xs font-bold text-gray-500">{moment(createdAt).fromNow()}</div>
+            <div className="text-xs font-bold text-gray-500">
+              {moment(createdAt).fromNow()}
+            </div>
           </div>
         </div>
       </div>
-      <div className="text-gray-700 my-3">
+      <div className="my-3 text-gray-700">
         {text}
       </div>
     </div>
