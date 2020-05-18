@@ -5,7 +5,7 @@ const store = configureStore();
 const state = store.getState();
 
 const axiosInstance = Axios.create({
-  baseURL: 'http://localhost:3000/'
+  baseURL: 'https://tranquil-river-82740.herokuapp.com/'
 });
 
 axiosInstance.defaults.headers.common.Authorization = `Bearer ${state.token}`;
