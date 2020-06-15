@@ -3,18 +3,19 @@
 ![screenshot](screenshot.jpg)
 
 ## Introduction
-This is part of two part project in [Microverse](https://www.microverse.org/) curriculum
-The project handle searching physicians by their speciality and handles creating appointments with patients.
+This is the frontend of the capstone project in [Microverse](https://www.microverse.org/) curriculum
+The project handles searching physicians by their specialty and handles creating appointments with patients.
 
-It consumes back-end api built with rails
+It consumes backend API built with rails
 
 You can check back-end [here](https://github.com/mosaaleb/edoc-api/)
 
 **Features**
-- Mobile app
-- Authentication with JWT
-- Filtering physicians by category
-- Creating appointments with physicians
+- Mobile app.
+- Authentication with JWT.
+- Filtering physicians by category.
+- Creating appointments with physicians.
+- Leaving upvotes and reviews.
 
 ## Built With
 - React
@@ -38,14 +39,14 @@ yarn install
 ```
 
 ### Running the project
-- Clone the [back end](https://github.com/mosaaleb/edoc-api).
-- Follow the instruction on how to setup the back end.
-- Setup the front end part (check the Setup section).
-- Start the server on both back end and front end.
+- Clone the [backend](https://github.com/mosaaleb/edoc-api).
+- Follow the instruction on how to set up the backend.
+- Setup the frontend part (check the Setup section).
+- Start the server on both the backend and frontend.
 ```ruby
-# back end rails
+# backend Rails
 rails s
-# front end react
+# frontend React
 npm start
 ```
 - Start developing.
@@ -67,15 +68,15 @@ There are no automated tests yet added for this project.
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!
+Contributions, issues, and feature requests are welcome!
 
 Feel free to check the [issues page](issues/).
 
 ## Coming Features
 - [ ] Doctor profile page listing all reviews left by patients.
-- [ ] Consuming doctor likes from back-end api.
+- [ ] Consuming doctor likes from back-end API.
 
-**Do you have specific feature in mind?** 
+**Do you have a specific feature in mind?** 
 Please [Submit](https://github.com/mosaaleb/edoc/labels/enhancement) it.
 
 ## Acknowledgments
